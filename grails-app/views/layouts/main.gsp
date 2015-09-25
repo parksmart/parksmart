@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="http://getbootstrap.com/favicon.ico">
 
-    <title>Park Smart</title>
+    <title>Park Smart | <g:layoutTitle/> </title>
 
     <asset:javascript src="applicationManifest.js"/>
     <asset:javascript src="application.js"/>
@@ -48,7 +48,8 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="#">Dashbord <span class="sr-only">(current)</span></a></li>
+                <li class="active"><g:link controller="advertisement" action="index">Advertisement <span class="sr-only">(current)</span></g:link></li>
+
                 <li><a href="#">Analytics</a></li>
             </ul>
         </div>

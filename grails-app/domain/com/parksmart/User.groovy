@@ -14,9 +14,12 @@ class User implements Serializable {
 	boolean passwordExpired
 
 	User(String username, String password) {
-		this()
 		this.username = username
 		this.password = password
+	}
+
+	User(){
+
 	}
 
 	@Override
