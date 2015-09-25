@@ -1,5 +1,6 @@
 package park.smart
 
+import com.parksmart.Advertisement
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 

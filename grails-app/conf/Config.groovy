@@ -123,6 +123,7 @@ grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.parksmart.
 grails.plugin.springsecurity.authority.className = 'com.parksmart.Role'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/':                ['permitAll'],
+    '/api/v1.0/**':     ['permitAll'],
 	'/index':           ['permitAll'],
 	'/index.gsp':       ['permitAll'],
 	'/assets/**':       ['permitAll'],
