@@ -14,7 +14,7 @@ class Advertisement {
     Double pricePerCycle
     List location
     List<Integer> daysAvailable
-    User owner
+    Long ownerId
 
     static constraints = {
         name()
@@ -36,4 +36,10 @@ class Advertisement {
     }
 
     static mapWith = "mongo"
+
+    static transients = ['ownerId']
+
+    User getOwner() {
+        User.get(ownerId)
+    }
 }
