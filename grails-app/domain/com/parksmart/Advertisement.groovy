@@ -1,4 +1,4 @@
-package park.smart
+package com.parksmart
 
 import com.parksmart.User
 
@@ -33,6 +33,7 @@ class Advertisement {
 
     static mapping = {
         address type: 'text'
+        location geoIndex:'2d', indexAttributes:[min:-5, max:5]
     }
 
     static mapWith = "mongo"
