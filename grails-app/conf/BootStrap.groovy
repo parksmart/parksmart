@@ -25,7 +25,11 @@ class BootStrap {
 
     private createUsers(){
         userNames?.each {
-            new User(username: it, password: "test").save(flush: true, failOnError: true)
+            new User(username: "${it}@parksmart.com",
+                    name: it,
+                    password: "test",
+                    mobileNumber: "9999999999"
+            ).save(flush: true, failOnError: true)
         }
     }
 }
