@@ -1,30 +1,108 @@
 package com.parksmart
 
-import com.parksmart.Advertisement
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['IS_AUTHENTICATED_FULLY'])
+import static org.springframework.http.HttpStatus.*
+import grails.transaction.Transactional
+
+@Secured('IS_AUTHENTICATED_ANONYMOUSLY')
+@Transactional(readOnly = true)
 class AdvertisementController {
 
-    def springSecurityService
+    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def create() {
-        User user = springSecurityService.getCurrentUser() as User
-        Advertisement advertisement = Advertisement.findByOwner(user) ?: new Advertisement()
-        render view: 'create', model: [advertisement: advertisement]
+    def index(AdvertisementSearchCO advertisementSearchCO) {
+        if (advertisementSearchCO.hasErrors()) {
+            respond advertisementSearchCO.errors
+            return
+        }
+        respond(Advertisement.findAllByLocationWithinCircle([advertisementSearchCO?.center, advertisementSearchCO?.radiusInKm]) ?: [])
     }
 
-    def save(Advertisement advertisement) {
-        println( params)
-        User user = springSecurityService.getCurrentUser() as User
-        advertisement.owner = user
-        if (advertisement.validate()){
-            advertisement.save()
-            redirect action: 'create'
+    def show(Advertisement advertisementInstance) {
+        respond advertisementInstance
+    }
+
+    def create() {
+        respond new Advertisement(params)
+    }
+
+    @Transactional
+    def save(Advertisement advertisementInstance) {
+        if (advertisementInstance == null) {
+            notFound()
             return
-        }else {
-            render view: 'create', model: [advertisement: advertisement]
+        }
+
+        if (advertisementInstance.hasErrors()) {
+            respond advertisementInstance.errors, view:'create'
+            return
+        }
+
+        advertisementInstance.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.created.message', args: [message(code: 'advertisement.label', default: 'Advertisement'), advertisementInstance.id])
+                redirect advertisementInstance
+            }
+            '*' { respond advertisementInstance, [status: CREATED] }
         }
     }
 
+    def edit(Advertisement advertisementInstance) {
+        respond advertisementInstance
+    }
+
+    @Transactional
+    def update(Advertisement advertisementInstance) {
+        if (advertisementInstance == null) {
+            notFound()
+            return
+        }
+
+        if (advertisementInstance.hasErrors()) {
+            respond advertisementInstance.errors, view:'edit'
+            return
+        }
+
+        advertisementInstance.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'Advertisement.label', default: 'Advertisement'), advertisementInstance.id])
+                redirect advertisementInstance
+            }
+            '*'{ respond advertisementInstance, [status: OK] }
+        }
+    }
+
+    @Transactional
+    def delete(Advertisement advertisementInstance) {
+
+        if (advertisementInstance == null) {
+            notFound()
+            return
+        }
+
+        advertisementInstance.delete flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Advertisement.label', default: 'Advertisement'), advertisementInstance.id])
+                redirect action:"index", method:"GET"
+            }
+            '*'{ render status: NO_CONTENT }
+        }
+    }
+
+    protected void notFound() {
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'advertisement.label', default: 'Advertisement'), params.id])
+                redirect action: "index", method: "GET"
+            }
+            '*'{ render status: NOT_FOUND }
+        }
+    }
 }
