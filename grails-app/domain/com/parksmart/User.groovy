@@ -8,10 +8,15 @@ class User implements Serializable {
 
 	String username
 	String password
-	boolean enabled = true
-	boolean accountExpired
-	boolean accountLocked
-	boolean passwordExpired
+    String name
+    String mobileNumber
+
+	Boolean enabled = true
+	Boolean accountExpired
+	Boolean accountLocked
+	Boolean passwordExpired
+
+
 
 	User(String username, String password) {
 		this.username = username
@@ -56,6 +61,10 @@ class User implements Serializable {
 	static constraints = {
 		username blank: false, unique: true
 		password blank: false
+        accountExpired nullable:true
+        accountLocked nullable: true
+        passwordExpired nullable:true
+
 	}
 
 	static mapping = {
@@ -63,4 +72,14 @@ class User implements Serializable {
 	}
 
 	static mapWith = "mongo"
+
+    static User getInstance(RegisterCO registerCO){
+        User user = new User()
+        user.name = registerCO.name
+        user.mobileNumber = registerCO.mobileNumber
+        user.password = registerCO.password
+        user.username = registerCO.username
+        user
+    }
+
 }
