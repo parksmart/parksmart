@@ -3,6 +3,7 @@
 	<head>
         <asset:javascript src="applicationManifest.js"/>
         <asset:javascript src="application.js"/>
+        <asset:stylesheet href="applicationManifest.css"/>
 		<meta name="layout" content="main"/>
 		<title>Welcome to Grails</title>
 		<style type="text/css" media="screen">
