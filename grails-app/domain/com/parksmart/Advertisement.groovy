@@ -1,6 +1,9 @@
 package com.parksmart
 
+import com.parksmart.User
+
 class Advertisement {
+
     String name
     String address
     String city
@@ -11,20 +14,21 @@ class Advertisement {
     Double pricePerCycle
     List location
     List<Integer> daysAvailable
-    User owner
+    Long ownerId
 
     static constraints = {
         name()
         location()
         address()
-        city(nullable: true)
-        locality(nullable: true)
-        numberOfParkingSlots(nullable: true)
-        numberOfCycles(nullable: true)
-        pricePerParkingSlot(nullable: true)
-        pricePerCycle(nullable: true)
+        city()
+        locality()
+        numberOfParkingSlots()
+        numberOfCycles()
+        pricePerParkingSlot()
+        pricePerCycle()
         daysAvailable()
         owner()
+
     }
 
     static mapping = {
@@ -34,9 +38,9 @@ class Advertisement {
 
     static mapWith = "mongo"
 
-    static transients = ['ownerId']
+    static transients = ['owner']
 
-    User getOwnerId() {
-        owner?.id
+    User getOwner() {
+        User.get(ownerId)
     }
 }
