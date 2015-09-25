@@ -133,6 +133,6 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 ]
 
 
-grails.plugin.springsecurity.facebook.domain.classname='com.parksmart.User'
+grails.plugin.springsecurity.facebook.domain.classname='com.parksmart.FacebookUser'
 grails.plugin.springsecurity.facebook.appId='851614561560453'
 grails.plugin.springsecurity.facebook.secret='651167186a2e7ff5b462908c4c24fba0'

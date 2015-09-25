@@ -62,4 +62,6 @@ class User implements Serializable {
 	static mapping = {
 		password column: '`password`'
 	}
+
+	static mapWith = "mongo"
 }

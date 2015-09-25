@@ -114,6 +114,15 @@
 
 			<div id="controller-list" role="navigation">
 				<h2>Available Controllers:</h2>
+
+				<sec:ifNotGranted roles="ROLE_USER">
+					<facebookAuth:connect />
+				</sec:ifNotGranted>
+				<sec:ifAllGranted roles="ROLE_USER">
+					Welcome <sec:username/>! (<g:link uri="/j_spring_security_logout">Logout</g:link>)
+				</sec:ifAllGranted>
+
+
 				<ul>
 					<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
 						<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>

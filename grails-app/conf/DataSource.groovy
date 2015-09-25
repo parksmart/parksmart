@@ -1,10 +1,21 @@
-dataSource {
-    pooled = true
-    jmxExport = true
-    driverClassName = "org.h2.Driver"
-    username = "sa"
-    password = ""
+grails {
+    mongo {
+        options {
+            autoConnectRetry = true
+            connectionsPerHost = 30
+            connectTimeout = 3000
+            connectionsPerHost = 40
+            socketTimeout = 60000
+            threadsAllowedToBlockForConnectionMultiplier = 5
+            maxAutoConnectRetryTime = 5
+            maxWaitTime = 120000
+        }
+        host = "127.0.0.1"
+        port = 27017
+        databaseName = "parksmart"
+    }
 }
+
 hibernate {
     cache.use_second_level_cache = true
     cache.use_query_cache = false
