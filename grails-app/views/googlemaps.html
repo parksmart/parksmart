@@ -11,7 +11,7 @@
             padding: 0;
         }
         #map {
-            height: 100%;
+            height: 75%;
         }
     </style>
     <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
@@ -107,6 +107,8 @@
         postal_code: 'short_name'
     };
 
+    var locationList = [{lat:28.5383658, long:77.3496595, message:"Location A"},{lat:38.5383658, long:77.3496595 , message:"Location B"},{lat:28.5383658, long:67.3496595, message:"Location C"}];
+
     function initAutocomplete() {
         // Create the autocomplete object, restricting the search to geographical
         // location types.
@@ -124,6 +126,28 @@
             mapTypeId:google.maps.MapTypeId.ROADMAP
         };
         map = new google.maps.Map(document.getElementById('map'), mapProp);
+    }
+
+    function dropMarkersOnMap(){
+        var markers = [];
+        $.each(locationList, function(idx, loc){
+            var currentMarker = new google.maps.Marker({
+                position: new google.maps.LatLng(loc.lat, loc.long),
+                map: map,
+                title: loc.message
+            });
+            currentMarker.addListener('click', function() {
+                map.setZoom(17);
+                map.panTo(currentMarker.position);
+                infowindow.open(map, currentMarker);
+            });
+            markers.push(currentMarker);
+        });
+        var bounds = new google.maps.LatLngBounds();
+        for(i=0;i<markers.length;i++) {
+            bounds.extend(markers[i].getPosition());
+        }
+        map.fitBounds(bounds);
     }
 
     // [START region_fillform]
@@ -155,20 +179,12 @@
             map: map,
             title: $("#autocomplete").val()
         });
-
-        var markers = [marker];
-        var bounds = new google.maps.LatLngBounds();
-        for(i=0;i<markers.length;i++) {
-            bounds.extend(markers[i].getPosition());
-        }
-
-        map.fitBounds(bounds);
         marker.addListener('click', function() {
             map.setZoom(17);
             map.panTo(marker.position);
             infowindow.open(map, marker);
         });
-
+        dropMarkersOnMap()
     }
     // [END region_fillform]
 
