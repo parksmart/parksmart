@@ -33,6 +33,7 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Dashboard</a></li>
+                <li><sec:loggedInUserInfo field="username"/></li>
                 <li><a href="#">Settings</a></li>
                 <li><a href="#">Profile</a></li>
                 <li><a href="#">Help</a></li>
@@ -46,13 +47,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        %{--<div class="col-sm-3 col-md-2 sidebar">--}%
-            %{--<ul class="nav nav-sidebar">--}%
-                %{--<li class="active"><g:link controller="advertisement" action="index">Advertisement <span class="sr-only">(current)</span></g:link></li>--}%
 
-                %{--<li><a href="#">Analytics</a></li>--}%
-            %{--</ul>--}%
-        %{--</div>--}%
 
         <div class="col-sm-12 col-md-12 main">
 
