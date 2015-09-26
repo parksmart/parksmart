@@ -4,7 +4,7 @@ class UserService {
 
     User registerUser(RegisterCO registerCO){
         User user = User.getInstance(registerCO)
-        user.save()
+        user.save(flush:true, failOnError: true)
         user
     }
 

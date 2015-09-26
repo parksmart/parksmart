@@ -13,7 +13,7 @@ var submitRegistrationForm = function (formId) {
                 }
                 showErrorMessage(errorString);
             } else {
-                showSuccessMessage(response.message);
+//                window.location.href = "/login/auth";
             }
         }
     });

@@ -45,7 +45,7 @@ class User implements Serializable {
 	}
 
 	def beforeInsert() {
-//		encodePassword()
+		encodePassword()
 	}
 
 	def beforeUpdate() {
@@ -66,6 +66,7 @@ class User implements Serializable {
         accountExpired nullable:true
         accountLocked nullable: true
         passwordExpired nullable:true
+        mobileNumber nullable: true
 	}
 
 	static mapping = {

@@ -5,4 +5,8 @@ class PublicController {
     def home(){
 
     }
+
+    def signUp(){
+
+    }
 }

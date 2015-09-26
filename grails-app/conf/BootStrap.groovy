@@ -29,7 +29,7 @@ class BootStrap {
     }
 
     private createUsers(){
-        Role userRole = new Role('ROLE_USER').save()
+        Role userRole = new Role('ROLE_USER').save(flush: true, failOnError: true)
         userNames?.each {
             User user = new User(username: "${it}@parksmart.com",
                     name: it,
