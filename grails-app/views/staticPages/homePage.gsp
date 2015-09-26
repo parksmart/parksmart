@@ -97,14 +97,26 @@
                         <!-- LAYER NR. 3 -->
                         <div class="tp-caption tp-resizeme sfl"
                              data-x="center"
-                             data-y="300"
-                             data-speed="600"
+                             data-y="600"
+                             data-speed="100"
                              data-start="0"
                              data-end="10000"
                              data-endspeed="600"><a href="page-services.html"
                                                     class="btn btn-default btn-lg">Find out how <i
                                     class="fa fa-angle-double-right pl-10"></i></a>
                         </div>
+
+                    <div class="tp-caption tp-resizeme sfl"
+                         data-x="center"
+                         data-y="300"
+                         data-speed="600"
+                         data-start="0"
+                         data-end="10000"
+                         data-endspeed="600"><a href="page-services.html"
+                                                class="btn btn-default btn-lg">Find out how <i
+                                class="fa fa-angle-double-right pl-10"></i></a>
+                    </div>
+
 
                     </li>
                     <!-- slide 1 end -->
@@ -201,7 +213,7 @@
 
                                 <p>Waiting in the traffic is the worst thing that happens each day with each one of us.
                                 Smart park can save around 1 hour each day on your commute.</p>
-                                <a href="page-services.html" class="link"><span>Read More</span></a>
+                                %{--<a href="page-services.html" class="link"><span>Read More</span></a>--}%
                             </div>
                         </div>
                     </div>
@@ -216,7 +228,7 @@
                                 <h2>Hassle free parking</h2>
 
                                 <p>Explicitly reserved parking space just for you.</p>
-                                <a href="page-services.html" class="link"><span>Read More</span></a>
+                                %{--<a href="page-services.html" class="link"><span>Read More</span></a>--}%
                             </div>
                         </div>
                     </div>
@@ -231,7 +243,7 @@
                                 <h2>Enjoy riding bicycle daily</h2>
 
                                 <p>Enjoy a ride bicycle from your parking area to your office.</p>
-                                <a href="page-services.html" class="link"><span>Read More</span></a>
+                                %{--<a href="page-services.html" class="link"><span>Read More</span></a>--}%
                             </div>
                         </div>
                     </div>
@@ -248,7 +260,7 @@
                                 <h2>Be healthy by daily workout</h2>
 
                                 <p>Riding a cycle daily for 30mins makes you fitter by each day</p>
-                                <a href="page-services.html" class="link"><span>Read More</span></a>
+                                %{--<a href="page-services.html" class="link"><span>Read More</span></a>--}%
                             </div>
                         </div>
                     </div>
@@ -263,7 +275,7 @@
                                 <h2>More time for family</h2>
 
                                 <p>Time saved from traffic is your family's time. Go out and enjoy with your loved ones.</p>
-                                <a href="page-services.html" class="link"><span>Read More</span></a>
+                                %{--<a href="page-services.html" class="link"><span>Read More</span></a>--}%
                             </div>
                         </div>
                     </div>
@@ -278,7 +290,7 @@
                                 <h2>Earn from your empty parking space when you are out for work</h2>
 
                                 <p>When you are out for work, your parking space is lying unused. Make some money by sharing it with your fellow smart parkers.</p>
-                                <a href="page-services.html" class="link"><span>Read More</span></a>
+                                %{--<a href="page-services.html" class="link"><span>Read More</span></a>--}%
                             </div>
                         </div>
                     </div>
@@ -310,7 +322,7 @@
                                     <h2>Manish's parking space</h2>
 
                                     <p>Manish lives in one part of the city and works in a different part of the city. He leaves from home at 7am and comes back at 7pm in the evening.</p>
-                                    <a href="page-services.html" class="btn-default btn">Read More</a>
+                                    %{--<a href="page-services.html" class="btn-default btn">Read More</a>--}%
                                 </div>
                             </div>
 
@@ -322,7 +334,7 @@
                                     <h2>Rohit needs parking</h2>
 
                                     <p>Rohit works for a company which is close to Manish's home. Rohit has to go through heavy traffic around his office are as it is quite crowded with cars.</p>
-                                    <a href="page-services.html" class="btn-default btn">Read More</a>
+                                    %{--<a href="page-services.html" class="btn-default btn">Read More</a>--}%
                                 </div>
                             </div>
 
@@ -334,7 +346,7 @@
                                     <h2>Park Smart connects</h2>
 
                                     <p>Parksmart connects Manish and Rohit to an arrangement where Rohit gets the parking space at Manish's house. In return he pays some money to Manish.</p>
-                                    <a href="page-services.html" class="btn-default btn">Read More</a>
+                                    %{--<a href="page-services.html" class="btn-default btn">Read More</a>--}%
                                 </div>
                             </div>
 
@@ -346,7 +358,7 @@
                                     <h2>Bicycle ride for better health</h2>
 
                                     <p>Further more, Manish has a cycle which he rides during weekend. He offers the same to Rohit for some more money.</p>
-                                    <a href="page-services.html" class="btn-default btn">Read More</a>
+                                    %{--<a href="page-services.html" class="btn-default btn">Read More</a>--}%
                                 </div>
                             </div>
                         </div>
