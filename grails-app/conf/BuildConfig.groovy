@@ -47,6 +47,9 @@ grails.project.dependency.resolution = {
     }
 
     dependencies {
+
+        compile "com.twilio.sdk:twilio-java-sdk:3.4.5"
+
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
         runtime 'mysql:mysql-connector-java:5.1.29'
         // runtime 'org.postgresql:postgresql:9.3-1101-jdbc41'
