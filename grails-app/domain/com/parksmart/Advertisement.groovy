@@ -1,10 +1,11 @@
 package com.parksmart
 
-import com.parksmart.User
+import grails.rest.Resource
 
+@Resource
 class Advertisement {
 
-    String name
+    String name // or title
     String address
     String city
     String locality
@@ -12,7 +13,7 @@ class Advertisement {
     Integer numberOfCycles
     Double pricePerParkingSlot
     Double pricePerCycle
-    List location
+    List<Double> location
     List<Integer> daysAvailable
     Long ownerId
 
@@ -20,8 +21,8 @@ class Advertisement {
         name()
         location()
         address()
-        city()
-        locality()
+        city(nullable: true)
+        locality(nullable: true)
         numberOfParkingSlots()
         numberOfCycles()
         pricePerParkingSlot()
@@ -33,7 +34,7 @@ class Advertisement {
 
     static mapping = {
         address type: 'text'
-        location geoIndex:'2d', indexAttributes:[min:-5, max:5]
+        location geoIndex: '2d', indexAttributes: [min: -5, max: 5]
     }
 
     static mapWith = "mongo"
@@ -42,5 +43,9 @@ class Advertisement {
 
     User getOwner() {
         User.get(ownerId)
+    }
+
+    void setLocation(List location) {
+        this.location = location ? [(0d + location[0]), (0d + location[1])] : []
     }
 }

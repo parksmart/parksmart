@@ -15,7 +15,7 @@ class AdvertisementSearchCO {
     }
 
     List getCenter() {
-        [0d + (latitude), 0d + (longitude)]
+        latitude && longitude ? [0d + (latitude), 0d + (longitude)] : []
     }
 
 

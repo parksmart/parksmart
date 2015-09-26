@@ -1,17 +1,25 @@
 package com.parksmart
 
 import grails.plugin.springsecurity.annotation.Secured
+import grails.rest.RestfulController
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Secured('IS_AUTHENTICATED_ANONYMOUSLY')
 @Transactional(readOnly = true)
-class AdvertisementController {
+class AdvertisementController extends RestfulController {
 
+    static responseFormats = ['json', 'xml']
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    AdvertisementController() {
+        super(Advertisement)
+    }
+
     def index(AdvertisementSearchCO advertisementSearchCO) {
+        bindData(advertisementSearchCO, params)
+        advertisementSearchCO?.validate()
         if (advertisementSearchCO.hasErrors()) {
             respond advertisementSearchCO.errors
             return
