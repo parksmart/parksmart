@@ -17,6 +17,6 @@ public enum DayType {
     DayType(String shortName, Integer jodaDayValue) {
         this.shortName = shortName
         this.jodaDayValue = jodaDayValue
-        this.value = value
+        this.value = jodaDayValue
     }
 }
