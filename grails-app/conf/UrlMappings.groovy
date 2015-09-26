@@ -9,7 +9,7 @@ class UrlMappings {
 
         "/advertisements"(resources:'advertisement')
 
-        "/"(view:"/index")
+        "/"(controller: "public", action: "home")
         "500"(view:'/error')
 	}
 }
