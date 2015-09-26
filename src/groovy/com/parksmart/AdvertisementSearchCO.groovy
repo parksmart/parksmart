@@ -5,10 +5,10 @@ import org.grails.databinding.BindingFormat
 
 @Validateable
 class AdvertisementSearchCO {
-//    @BindingFormat("MM/dd/yyyy")
-//    Date startDate
-//    @BindingFormat("MM/dd/yyyy")
-//    Date endDate
+    @BindingFormat("MM/dd/yyyy")
+    Date startDate
+    @BindingFormat("MM/dd/yyyy")
+    Date endDate
     BigDecimal latitude
     BigDecimal longitude
     Integer radiusInKm = 5
