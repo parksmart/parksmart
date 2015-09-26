@@ -2,7 +2,7 @@ package com.parksmart
 
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
+@Secured(['IS_AUTHENTICATED_ANONYMOUSLY','IS_AUTHENTICATED_FULLY'])
 class StaticPagesController {
 
     def index() {
@@ -18,7 +18,7 @@ class StaticPagesController {
     }
 
     def requestBooking(){
-        render "implement requestBooking page UI"
+
     }
 
     def confirmBooking(){
