@@ -31,7 +31,7 @@ class Advertisement {
         pricePerParkingSlot(nullable: true)
         pricePerCycle(nullable: true)
         daysAvailable()
-        owner()
+        ownerId()
 
     }
 
