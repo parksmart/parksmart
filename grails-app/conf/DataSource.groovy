@@ -53,7 +53,7 @@ environments {
             url = "jdbc:mysql://localhost:3306/parksmart?autoReconnect=true"
         }
     }
-    test {
+    qa {
         dataSource {
             dbCreate = "update"
             url = "jdbc:mysql://localhost:3306/parksmart_test?autoReconnect=true"
