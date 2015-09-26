@@ -1,4 +1,4 @@
-package com.parksmart.com.parksmart.enums
+package com.parksmart
 
 
 public enum DayType {
@@ -12,9 +12,11 @@ public enum DayType {
 
     String shortName
     Integer jodaDayValue
+    Integer value
 
-    DayType(String shortName, Integer jodaDayValue){
+    DayType(String shortName, Integer jodaDayValue) {
         this.shortName = shortName
         this.jodaDayValue = jodaDayValue
+        this.value = value
     }
 }
