@@ -177,11 +177,11 @@
 
             <div class="row">
                 <div class="col-sm-6">
-                    <a href="#" class="btn btn-default btn-lg">I need a Parking</a>
+                    <a href="${createLink(controller: 'search', action: 'index')}" class="btn btn-default btn-lg">I need a Parking</a>
                 </div>
 
                 <div class="col-sm-6">
-                    <a href="#" class="btn btn-default btn-lg">Rent out my Parking for few hours in a day</a>
+                    <a href="${createLink(controller: 'advertisement', action: 'create')}" class="btn btn-default btn-lg">Rent out my Parking for few hours in a day</a>
                 </div>
             </div>
         </div>

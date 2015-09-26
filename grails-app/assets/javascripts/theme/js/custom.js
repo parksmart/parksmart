@@ -7,3 +7,7 @@
  * License URI:http://support.wrapbootstrap.com/
  * File Description: Place here your custom scripts
  */
+
+function gotoUrl(url){
+    window.location = url;
+}

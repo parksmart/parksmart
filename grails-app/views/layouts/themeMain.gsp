@@ -219,7 +219,7 @@
                     <div class="header-left clearfix">
 
                         <!-- logo -->
-                        <div style="display: inline-flex">
+                        <div style="display: inline-flex;cursor: pointer;" onclick="gotoUrl('${createLink(controller: 'staticPages', action: 'homePage')}');" >
                             %{--<a href="index.html">--}%
                                 %{--<asset:image src="theme/images/logo_red.png" id="logo" alt=""/>--}%
                                 <h2>Park</h2><h2 style="color: red;font-weight: bold;">Smart</h2>
