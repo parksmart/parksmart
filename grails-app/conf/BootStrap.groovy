@@ -1,3 +1,4 @@
+import com.parksmart.Advertisement
 import com.parksmart.User
 import grails.util.Environment
 
@@ -11,7 +12,7 @@ class BootStrap {
             case 'development':
             case 'qa':
                 log.info("Dropping database... ")
-                User.collection.getDB().dropDatabase()
+                Advertisement.collection.getDB().dropDatabase()
                 bootstrapDummyData()
                 break;
         }

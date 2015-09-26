@@ -2,4 +2,5 @@
 *= require bootstrap/bootstrap.css
 *= require bootstrap/bootstrap-theme.css
 *= require dashboard.css
+*= require main.css
 */

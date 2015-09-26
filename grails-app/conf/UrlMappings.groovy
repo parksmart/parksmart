@@ -7,6 +7,8 @@ class UrlMappings {
             }
         }
 
+        "/advertisements"(resources:'advertisement')
+
         "/"(view:"/index")
         "500"(view:'/error')
 	}
