@@ -1,7 +1,7 @@
 <%@ page import="com.parksmart.com.parksmart.enums.DayType" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <meta name="layout" content="main"/>
+    <meta name="layout" content="themeMain"/>
     <title>Advertisement</title>
     <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
 

@@ -13,4 +13,5 @@
 *= require theme/style-switcher/style-switcher.css
 *= require theme/css/custom.css
 *= require theme/css/skins/red.css
+*= require main.css
 */
