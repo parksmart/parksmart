@@ -1,6 +1,5 @@
 package com.parksmart
 
-import com.mongodb.DBCursor
 import grails.mongodb.geo.Distance
 import grails.mongodb.geo.Metric
 import grails.mongodb.geo.Point

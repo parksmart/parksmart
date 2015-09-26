@@ -1,4 +1,4 @@
-<%@ page import="com.parksmart.com.parksmart.enums.DayType" contentType="text/html;charset=UTF-8" %>
+<%@ page import="com.parksmart.DayType" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <meta name="layout" content="themeMain"/>
@@ -65,7 +65,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Delivery Days</label>
+                    <label class="col-sm-3 control-label"> Days Available</label>
 
                     <div class="col-sm-9">
 
@@ -73,8 +73,8 @@
                             <div class="time-slot-check-box">
                                 ${day.shortName}<br/>
                                 <g:checkBox title="${day}" name="daysAvailable"
-                                            checked="${advertisementInstance?.daysAvailable?.contains(day.jodaDayValue)}"
-                                            value="${day.jodaDayValue}"/>
+                                            checked="${advertisementInstance?.daysAvailable?.contains(day)}"
+                                            value="${day}"/>
                             </div>
                         </g:each>
 
