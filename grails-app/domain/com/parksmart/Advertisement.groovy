@@ -46,7 +46,7 @@ class Advertisement {
     static transients = ['owner']
 
     User getOwner() {
-        User.get(ownerId)
+        get(ownerId)
     }
 
     void setLocation(List location) {
