@@ -1,5 +1,8 @@
 package com.parksmart
 
+import grails.rest.Resource
+
+@Resource
 class Booking {
     Long advertisementId
     Long ownerId

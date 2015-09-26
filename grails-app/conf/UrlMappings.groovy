@@ -8,6 +8,7 @@ class UrlMappings {
         }
 
         "/advertisements"(resources:'advertisement')
+        "/bookings"(resources:'booking')
 
         "/"(controller: "public", action: "home")
         "500"(view:'/error')
