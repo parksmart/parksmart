@@ -11,7 +11,7 @@
 
 <div class="container-fluid">
 
-    <legend>Rent out my parking / cycle</legend>
+    <h2>Rent out my parking / cycle</h2>
 
     <g:render template="/templates/errorContainer" model="[object: advertisementInstance]"/>
 
@@ -57,7 +57,7 @@
                                value="${advertisementInstance?.numberOfCycles}" placeholder="Number of cycles"/>
                     </div>
 
-                    <label for="pricePerCycle" class="col-sm-3 control-label">Charges/ day <i class="fa fa-rupee"></i></label>
+                    <label for="pricePerCycle" class="col-sm-3 control-label">Charges per cycle per day </label>
 
                     <div class="col-sm-3">
                         <input type="number" id="pricePerCycle" name="pricePerCycle" min="0" class="form-control"
@@ -93,7 +93,7 @@
 
         <div class="form-group">
             <div class="col-sm-6 text-center">
-                <button type="submit" class="btn btn-default"> ${advertisementInstance?.id ? 'Update' : 'Create'} </button>
+                <button type="submit" class="btn btn-default"> ${advertisementInstance?.id ? 'Update my advertisement' : 'post my advertisement'} </button>
             </div>
         </div>
     </g:form>
