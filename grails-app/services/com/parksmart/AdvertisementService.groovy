@@ -62,8 +62,19 @@ class AdvertisementService {
         new DateTime()
     }
 
-    List sequenceOfNumToArrayOfRange(List availabilities) {
-        availabilities
+    List convertSequenceOfNumToArrayOfRange(List<Integer> availabilities) {
+        List ranges
+        int rstart,rend
+        for (int i = 0; i < availabilities.length; i++) {
+            rstart = availabilities[i];
+            rend = rstart;
+            while (availabilities[i + 1] - availabilities[i] == 1) {
+                rend = availabilities[i + 1]; // increment the index if the numbers sequential
+                i++;
+            }
+            ranges.push(rstart == rend ? rstart+'' : rstart + '-' + rend);
+        }
+        return ranges
     }
 
     final String sequenceOfNumToArrayOfRangeJavaScriptFunction = '''
