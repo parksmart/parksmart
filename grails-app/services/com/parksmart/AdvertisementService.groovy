@@ -46,6 +46,10 @@ class AdvertisementService {
         new DateTime()
     }
 
+    List sequenceOfNumToArrayOfRange() {
+
+    }
+
     final String sequenceOfNumToArrayOfRangeJavaScriptFunction = '''
 function getRanges(array) {
   var ranges = [], rstart, rend;
