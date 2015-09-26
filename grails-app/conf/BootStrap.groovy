@@ -9,6 +9,7 @@ import grails.util.Environment
 class BootStrap {
 
     List<String> userNames = ['rohit', 'puneet', 'farid', 'manish', 'vaibhav', 'vivek']
+    def advertisementService
 
     def init = { servletContext ->
         switch (Environment?.current?.name) {
@@ -26,6 +27,9 @@ class BootStrap {
     private void bootstrapDummyData(){
         createUsers()
         TestUtil.createAdvertisements()
+        Advertisement.list()?.each {
+            advertisementService.createAvailabilities(it)
+        }
     }
 
     private createUsers(){
