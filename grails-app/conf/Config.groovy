@@ -88,6 +88,11 @@ grails.hibernate.osiv.readonly = false
 environments {
     development {
         grails.logging.jul.usebridge = true
+
+        sms.useTestCredentials = true
+        sms.defaultRecipientWithLiveCredentials = '+919971064485'
+        sms.overrideSender = '+19038044600'
+        twilio.skipAuthenticationForInboundSMS = true
     }
     production {
         grails.logging.jul.usebridge = false
@@ -145,3 +150,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 grails.plugin.springsecurity.facebook.domain.classname='com.parksmart.FacebookUser'
 grails.plugin.springsecurity.facebook.appId='851614561560453'
 grails.plugin.springsecurity.facebook.secret='651167186a2e7ff5b462908c4c24fba0'
+
+// Twilio
+twilio.testAccountSid = ""
+twilio.testAuthToken = ""
