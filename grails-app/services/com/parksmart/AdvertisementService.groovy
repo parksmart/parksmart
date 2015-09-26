@@ -11,9 +11,9 @@ class AdvertisementService {
     final static Integer DEFAULT_AVAILABILITY_DURATION_IN_DAYS = 30
 
 
-    void createAvailabilities(Advertisement advertisement) {
+    void createAvailabilities(Advertisement advertisement, Integer durationInDays = DEFAULT_AVAILABILITY_DURATION_IN_DAYS) {
         DateTime startDate = currentDateTime
-        DateTime endDate = currentDateTime?.plusDays DEFAULT_AVAILABILITY_DURATION_IN_DAYS
+        DateTime endDate = currentDateTime?.plusDays durationInDays
         while(startDate < endDate) {
             if(startDate?.dayOfWeek in advertisement.daysAvailable*.value) {
                 advertisement?.numberOfParkingSlots?.times {
