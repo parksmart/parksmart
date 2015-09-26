@@ -121,6 +121,7 @@ log4j.main = {
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.parksmart.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.parksmart.UserRole'
 grails.plugin.springsecurity.authority.className = 'com.parksmart.Role'
+grails.plugin.springsecurity.logout.postOnly = false
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
     '/advertisements': ['permitAll'],
 
