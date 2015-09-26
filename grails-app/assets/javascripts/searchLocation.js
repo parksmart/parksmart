@@ -77,13 +77,12 @@
             map: map,
             title: $("#address").val()
         });
+        map.panTo(marker.position);
+        map.setZoom(17);
 
         marker.addListener('click', function () {
-            map.setZoom(17);
-            map.panTo(marker.position);
             infowindow.open(map, marker);
         });
-        dropMarkersOnMap()
     }
 // [END region_fillform]
 
