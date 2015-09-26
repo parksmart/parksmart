@@ -419,7 +419,9 @@
                     <div class="col-md-2 col-sm-6">
                         <div class="box-style-1 white-bg team-member">
                             <div class="overlay-container">
-                                <img src="https://media.licdn.com/media/p/3/005/0a7/024/000a466.jpg" alt="">
+                                %{--<img src="https://media.licdn.com/media/p/3/005/0a7/024/000a466.jpg" alt="">--}%
+                                <asset:image src="team/Farid.png" alt="Farid" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"/>
+                                %{--<asset:image  src="https://media.licdn.com/media/p/3/005/0a7/024/000a466.jpg" alt="">--}%
 
                                 <div class="overlay">
                                     <ul class="social-links clearfix">
