@@ -31,5 +31,8 @@ var showSuccessMessage = function (message) {
 var showMessage = function (messageDivId, message) {
     var $div = $("#" + messageDivId);
     $div.find('p').html(message);
-    $div.css('display', 'block')
+    $div.css('display', 'block');
+    setInterval(function(){
+        $div.fadeOut("slow");
+    }, 5000);
 };

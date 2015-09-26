@@ -1,3 +1,23 @@
+dataSource {
+    pooled = true
+    driverClassName = "com.mysql.jdbc.Driver"
+    dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
+    username = "root"
+    password = "igdefault"
+    properties {
+        maxActive = 50
+        maxIdle = 25
+        minIdle = 5
+        initialSize = 5
+        minEvictableIdleTimeMillis = 60000
+        timeBetweenEvictionRunsMillis = 60000
+        maxWait = 10000
+        testOnBorrow = true
+        testWhileIdle = true
+        testOnReturn = false
+        validationQuery = "SELECT 1"
+    }
+}
 grails {
     mongo {
         options {
@@ -30,13 +50,13 @@ environments {
     development {
         dataSource {
             dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
+            url = "jdbc:mysql://localhost:3306/parksmart?autoReconnect=true"
         }
     }
     test {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
+            url = "jdbc:mysql://localhost:3306/parksmart?autoReconnect=true"
         }
     }
     production {

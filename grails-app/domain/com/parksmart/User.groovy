@@ -10,15 +10,13 @@ class User implements Serializable {
 	String password
     String name
     String mobileNumber
-
-	Boolean enabled = true
-	Boolean accountExpired
-	Boolean accountLocked
-	Boolean passwordExpired
-
-
+	boolean enabled = true
+	boolean accountExpired
+	boolean accountLocked
+	boolean passwordExpired
 
 	User(String username, String password) {
+		this()
 		this.username = username
 		this.password = password
 	}
@@ -42,7 +40,11 @@ class User implements Serializable {
 		username
 	}
 
- 	def beforeInsert() {
+	Set<Role> getAuthorities() {
+		UserRole.findAllByUser(this)*.role
+	}
+
+	def beforeInsert() {
 		encodePassword()
 	}
 
@@ -64,14 +66,11 @@ class User implements Serializable {
         accountExpired nullable:true
         accountLocked nullable: true
         passwordExpired nullable:true
-
 	}
 
 	static mapping = {
 		password column: '`password`'
 	}
-
-	static mapWith = "mongo"
 
     static User getInstance(RegisterCO registerCO){
         User user = new User()
@@ -81,5 +80,6 @@ class User implements Serializable {
         user.username = registerCO.username
         user
     }
-
 }
+
+

@@ -11,25 +11,20 @@
 
                 <div id="signUpErrorsDiv" role="alert" class="alert alert-danger alert-dismissible fade in"
                      style="display: none">
-                    <button aria-label="Close" data-dismiss="alert" class="close" type="button">
-                        <span aria-hidden="true">×</span></button>
-
                     <p></p>
                 </div>
 
                 <div id="signUpSuccessMessageDiv" role="alert" class="alert alert-success alert-dismissible fade in"
                      style="display: none">
-                    <button aria-label="Close" data-dismiss="alert" class="close" type="button">
-                        <span aria-hidden="true">×</span></button>
-
                     <p></p>
                 </div>
 
                 <div class="form-group" style="border-bottom: 1px solid #999; padding-bottom:10px">
-                    <div class="col-md-offset-3 col-md-9">
-                        <button class="btn btn-primary" type="button" id="btn-fbsignup"><i
-                                class="icon-facebook"></i> &nbsp; Sign Up with Facebook</button>
-                    </div>
+                    %{--<div class="col-md-offset-3 col-md-9">--}%
+                        %{--<button class="btn btn-primary" type="button" id="btn-fbsignup"><i--}%
+                                %{--class="icon-facebook"></i> &nbsp; Sign Up with Facebook</button>--}%
+                    %{--</div>--}%
+                    <facebookAuth:connect />
                 </div>
 
                 <div style="text-align: center">
