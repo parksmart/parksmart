@@ -1,10 +1,12 @@
 package com.parksmart
 
+import grails.plugin.springsecurity.annotation.Secured
 import grails.rest.RestfulController
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
+@Secured('IS_AUTHENTICATED_ANONYMOUSLY')
 @Transactional(readOnly = true)
 class BookingController extends RestfulController {
 
