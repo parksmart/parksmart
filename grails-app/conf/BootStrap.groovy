@@ -1,7 +1,9 @@
 import com.parksmart.Advertisement
 import com.parksmart.Role
+import com.parksmart.TestUtil
 import com.parksmart.User
 import com.parksmart.UserRole
+import grails.mongodb.geo.Point
 import grails.util.Environment
 
 class BootStrap {
@@ -23,6 +25,7 @@ class BootStrap {
 
     private void bootstrapDummyData(){
         createUsers()
+        TestUtil.createAdvertisements()
     }
 
     private createUsers(){
@@ -36,5 +39,7 @@ class BootStrap {
             UserRole.create(user, userRole, true )
         }
     }
+
+
 
 }
