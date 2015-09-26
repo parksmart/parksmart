@@ -13,8 +13,8 @@ class RegisterController {
         println("RegisterCO: ${registerCO.properties}")
         Map responseModel = [:]
         if (registerCO.validate()) {
-            userService.registerUser(registerCO)
-            responseModel = [status: true, message: "You have been registered successfully."]
+            User user = userService.registerUser(registerCO)
+            responseModel = [status: true, message: "You have been registered successfully.", userId: user.id]
         } else {
             List<String> errors = populateErrorMessages(registerCO)
             responseModel = [status: false, errors: errors]
