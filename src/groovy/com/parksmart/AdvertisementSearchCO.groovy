@@ -23,5 +23,7 @@ class AdvertisementSearchCO {
         latitude && longitude ? [0d + (latitude), 0d + (longitude)] : []
     }
 
-
+    Integer getRadiusInKm() {
+        radiusInKm?:5
+    }
 }

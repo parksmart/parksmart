@@ -5,6 +5,7 @@ import com.mongodb.DBCollection
 import grails.mongodb.geo.Distance
 import grails.mongodb.geo.Metric
 import org.joda.time.DateTime
+import org.springframework.data.mongodb.core.aggregation.AggregationResults
 
 class AdvertisementService {
 
@@ -27,6 +28,22 @@ class AdvertisementService {
         }
     }
 
+    List<AdvertisementResult> findAllAdvertisements(AdvertisementSearchCO advertisementSearchCO) {
+        AggregationOutput aggregationOutput = aggregateAndFindAvailability(advertisementSearchCO)
+        List<AdvertisementResult> advertisementResultsList = aggregationOutput?.results()?.inject([]) { List<AdvertisementResult> advertisementResults, aggregationResult->
+            AdvertisementResult advertisementResult = (AdvertisementResult) Advertisement.get(aggregationResult?.advertisementId)
+            if(advertisementResult?.availabilityRange?.type == AvailabilityType.PARKING) {
+                advertisementResult.parkingAvailabilityRange = sequenceOfNumToArrayOfRange(advertisementResult?.availabilityRange?.value)
+            }
+            if(advertisementResult?.availabilityRange?.type == AvailabilityType.CYCLE) {
+                advertisementResult.cycleAvailabilityRange = sequenceOfNumToArrayOfRange(advertisementResult?.availabilityRange?.value)
+            }
+            advertisementResults << advertisementResult
+            advertisementResults
+        }
+        advertisementResultsList
+    }
+
     AggregationOutput aggregateAndFindAvailability(AdvertisementSearchCO advertisementSearchCO) {
         DBCollection availabilityCollection = Availability.collection
 
@@ -46,8 +63,8 @@ class AdvertisementService {
         new DateTime()
     }
 
-    List sequenceOfNumToArrayOfRange() {
-
+    List sequenceOfNumToArrayOfRange(List availabilities) {
+        availabilities
     }
 
     final String sequenceOfNumToArrayOfRangeJavaScriptFunction = '''

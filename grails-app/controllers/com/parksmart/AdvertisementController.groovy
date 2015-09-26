@@ -15,6 +15,7 @@ import static org.springframework.http.HttpStatus.*
 class AdvertisementController extends RestfulController {
 
     def springSecurityService
+    def advertisementService
 
     static responseFormats = ['html', 'json', 'xml']
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -31,7 +32,7 @@ class AdvertisementController extends RestfulController {
             respond advertisementSearchCO.errors
             return
         }
-        respond Advertisement.findAllByGeoLocationGeoWithin(Sphere.valueOf([advertisementSearchCO?.center, new Distance(advertisementSearchCO?.radiusInKm ?: DEFAULT_RADIUS, Metric.KILOMETERS).inRadians()]))
+        respond advertisementService.findAllAdvertisements(advertisementSearchCO)
     }
 
     def show(Advertisement advertisementInstance) {
@@ -59,6 +60,7 @@ class AdvertisementController extends RestfulController {
 
         advertisementInstance.geoLocation = new Point(advertisementInstance.location[0], advertisementInstance.location[1])
         advertisementInstance.save flush: true
+        advertisementService.createAvailabilities(advertisementInstance)
 
         request.withFormat {
             form multipartForm {
