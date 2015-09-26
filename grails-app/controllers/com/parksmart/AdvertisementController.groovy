@@ -30,13 +30,6 @@ class AdvertisementController extends RestfulController {
             respond advertisementSearchCO.errors
             return
         }
-//        DBCursor cursor = Advertisement.collection.find(['geoLocation': ['$geoWithin': ['$centerSphere': [advertisementSearchCO?.center, new Distance(5, Metric.KILOMETERS).inRadians()]]]])
-        /*
-
-        List<Advertisement> advertisementList = []
-        while(cursor.hasNext()) {
-            advertisementList << (cursor.next() as Advertisement)
-        }*/
         respond Advertisement.findAllByGeoLocationGeoWithin(Sphere.valueOf([advertisementSearchCO?.center, new Distance(advertisementSearchCO?.radiusInKm, Metric.KILOMETERS).inRadians()]))
     }
 
