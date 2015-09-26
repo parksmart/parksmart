@@ -13,6 +13,6 @@ class SearchController {
         List<Long> advertisementIds = params['advertisementIds[]'].collect{
             it as Long
         }
-        render template: 'renderCards', model: [advertisements : Advertisement.findAllByIdInList(advertisementIds)]
+        render template: 'renderCards', model: [advertisements : Advertisement.findAllByIdInList(advertisementIds), ifViewerIsOwner:false]
     }
 }
