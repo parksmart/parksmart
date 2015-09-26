@@ -1,6 +1,6 @@
 package com.parksmart
 
-class MailService {
+class EmailService {
 
     def mailService
 
