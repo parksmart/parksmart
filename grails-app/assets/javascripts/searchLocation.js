@@ -37,7 +37,7 @@
             });
 
 
-            var address = "<a target='_blank' href='https://www.google.co.in/maps/search/"+loc.fullAddress+"'>"+loc.fullAddress+"</a>"
+            var address = "<a target='_blank' href='https://www.google.co.in/maps/dir//"+loc.fullAddress+"'>"+loc.fullAddress+"</a>"
             //We can also add html div in the info window content
             var infowindow = new google.maps.InfoWindow({
                 content: address
