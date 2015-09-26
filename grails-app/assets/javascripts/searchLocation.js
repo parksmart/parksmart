@@ -37,9 +37,10 @@
             });
 
 
+            var address = "<a target='_blank' href='https://www.google.co.in/maps/search/"+loc.fullAddress+"'>"+loc.fullAddress+"</a>"
             //We can also add html div in the info window content
             var infowindow = new google.maps.InfoWindow({
-                content: loc.message
+                content: address
             });
 
             currentMarker.addListener('click', function () {
@@ -109,11 +110,13 @@
 
 
     var successCallback = function(responseJson){
+        console.log(responseJson);
         locationList = responseJson.map(function(obj){
             var rObj = {};
             rObj.lat=obj.geoLocation.x;
             rObj.long=obj.geoLocation.y;
             rObj.message=obj.name;
+            rObj.fullAddress=obj.address;
             return rObj;
         });
         dropMarkersOnMap();
