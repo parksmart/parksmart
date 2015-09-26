@@ -41,6 +41,7 @@ class TestUtil {
 
         ads.each {Map ad->
             Advertisement advertisement = new Advertisement(ad)
+            advertisement.geoLocation  = new Point(advertisement.location[0], advertisement.location[1])
             advertisement.ownerId = getRandom(userIdList)
             save(advertisement)
         }
