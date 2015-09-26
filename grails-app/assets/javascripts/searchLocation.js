@@ -120,6 +120,10 @@
             return rObj;
         });
         dropMarkersOnMap();
+        var advertisementIds = responseJson.map(function(obj){
+          return obj.id;
+        });
+        $("#cards-div").load("/search/renderCards", {advertisementIds: advertisementIds});
     };
 
     function searchAvailabelLocations(){
