@@ -34,6 +34,6 @@ class StaticPagesController {
     }
 
     def createAdvertisement(){
-        render "implement createAdvertisement page UI"
+       
     }
 }
