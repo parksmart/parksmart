@@ -263,7 +263,7 @@
                                     <!-- Collect the nav links, forms, and other content for toggling -->
                                     <div class="collapse navbar-collapse" id="navbar-collapse-1">
                                         <ul class="nav navbar-nav navbar-right">
-                                            <g:if test="${actionName=='homePage'}">
+                                            <g:if test="${actionName=='home' && controllerName=='public'}">
                                                 <li><a href="#benefits" class="btn btn-lg smooth-scroll" data-toggle="dropdown">Why Park Smart</a></li>
                                                 <li><a href="#howitworks" class="btn btn-lg smooth-scroll" data-toggle="dropdown">How it works</a></li>
                                                 <li><a href="#team" class="btn btn-lg smooth-scroll" data-toggle="dropdown">Our Team</a></li>
