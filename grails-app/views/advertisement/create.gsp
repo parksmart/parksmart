@@ -13,20 +13,20 @@
 
     <legend>Advertisement</legend>
 
-    <g:render template="/templates/errorContainer" model="[object: advertisement]"/>
+    <g:render template="/templates/errorContainer" model="[object: advertisementInstance]"/>
 
     <g:form controller="advertisement" action="save" class="form-horizontal">
-        <input type="hidden" id="id" name="id" value="${advertisement?.id}"/>
-        <input type="hidden" id="locality" name="city" value="${advertisement?.city}"/>
-        <input type="hidden" id="route" name="locality" value="${advertisement?.locality}"/>
-        <input type="hidden" id="location-lat" name="location" value="${advertisement?.location ? advertisement?.location[0] : ''}"/>
-        <input type="hidden" id="location-long" name="location" value="${advertisement?.location ? advertisement?.location[1] : ''}"/>
+        <input type="hidden" id="id" name="id" value="${advertisementInstance?.id}"/>
+        <input type="hidden" id="locality" name="city" value="${advertisementInstance?.city}"/>
+        <input type="hidden" id="route" name="locality" value="${advertisementInstance?.locality}"/>
+        <input type="hidden" id="location-lat" name="location" value="${advertisementInstance?.location ? advertisementInstance?.location[0] : ''}"/>
+        <input type="hidden" id="location-long" name="location" value="${advertisementInstance?.location ? advertisementInstance?.location[1] : ''}"/>
 
         <div class="row">
 
             <div class="col-sm-6">
-                <form:textField label="Name/Title" name="name" value="${advertisement?.name}"/>
-                <form:textField label="Address" onFocus="geolocate()" name="address" value="${advertisement?.address}"/>
+                <form:textField label="Name/Title" name="name" value="${advertisementInstance?.name}"/>
+                <form:textField label="Address" onFocus="geolocate()" name="address" value="${advertisementInstance?.address}"/>
 
                 <div class="form-group">
                     <label for="numberOfParkingSlots" class="col-sm-3 control-label">Number of parking slots</label>
@@ -34,7 +34,7 @@
                     <div class="col-sm-3">
                         <input id="numberOfParkingSlots" type="number" name="numberOfParkingSlots" min="0"
                                class="form-control"
-                               value="${advertisement?.numberOfParkingSlots}" placeholder="Number of parking slots"/>
+                               value="${advertisementInstance?.numberOfParkingSlots}" placeholder="Number of parking slots"/>
                     </div>
 
                     <label for="pricePerParkingSlot" class="col-sm-3 control-label">Price per parking slot</label>
@@ -42,7 +42,7 @@
                     <div class="col-sm-3">
                         <input id="pricePerParkingSlot" type="number" name="pricePerParkingSlot" min="0"
                                class="form-control"
-                               value="${advertisement?.pricePerParkingSlot}" placeholder="Price per parking slot"/>
+                               value="${advertisementInstance?.pricePerParkingSlot}" placeholder="Price per parking slot"/>
                     </div>
 
                 </div>
@@ -52,14 +52,14 @@
 
                     <div class="col-sm-3">
                         <input type="number" id="numberOfCycles" name="numberOfCycles" min="0" class="form-control"
-                               value="${advertisement?.numberOfCycles}" placeholder="Number of cycles"/>
+                               value="${advertisementInstance?.numberOfCycles}" placeholder="Number of cycles"/>
                     </div>
 
                     <label for="pricePerCycle" class="col-sm-3 control-label">Price per cycle</label>
 
                     <div class="col-sm-3">
                         <input type="number" id="pricePerCycle" name="pricePerCycle" min="0" class="form-control"
-                               value="${advertisement?.pricePerCycle}" placeholder="Price per cycle"/>
+                               value="${advertisementInstance?.pricePerCycle}" placeholder="Price per cycle"/>
                     </div>
 
                 </div>
@@ -73,7 +73,7 @@
                             <div class="time-slot-check-box">
                                 ${day.shortName}<br/>
                                 <g:checkBox title="${day}" name="daysAvailable"
-                                            checked="${advertisement?.daysAvailable?.contains(day.jodaDayValue)}"
+                                            checked="${advertisementInstance?.daysAvailable?.contains(day.jodaDayValue)}"
                                             value="${day.jodaDayValue}"/>
                             </div>
                         </g:each>
@@ -91,7 +91,7 @@
 
         <div class="form-group">
             <div class="col-sm-6 text-center">
-                <button type="submit" class="btn btn-default">Create</button>
+                <button type="submit" class="btn btn-default"> ${advertisementInstance?.id ? 'Update' : 'Create'} </button>
             </div>
         </div>
     </g:form>
@@ -163,8 +163,8 @@
         console.log("latitude " + place.geometry.location.lat());
         console.log("longitude " + place.geometry.location.lng());
 
-        document.getElementById("location-lat").value = place.geometry.location.lat()+"d";
-        document.getElementById("location-long").value = place.geometry.location.lng()+"d";
+        document.getElementById("location-lat").value = place.geometry.location.lat();
+        document.getElementById("location-long").value = place.geometry.location.lng();
 
 
         for (var component in componentForm) {

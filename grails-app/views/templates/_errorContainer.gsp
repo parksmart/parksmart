@@ -11,9 +11,9 @@
     </div>
 </g:if>
 <g:if test="${object?.hasErrors()}">
-    <div class="alert alert-error">
+    <div class="alert alert-danger">
         <button type="button" class="close" data-dismiss="alert">×</button>
-        <ul class="unstyled">
+        <ul class="list-unstyled">
             <g:eachError in="${object}" var="error">
                 <li><g:message error="${error}"/></li>
             </g:eachError>
