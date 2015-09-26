@@ -2,6 +2,7 @@ package com.parksmart
 
 class Booking {
     Long advertisementId
+    Long ownerId
     Long customerId
     Date startDate
     Date endDate
@@ -13,6 +14,7 @@ class Booking {
         advertisementId()
         isParking(nullable: true)
         isCycle(nullable: true)
+        ownerId()
         customerId()
         startDate()
         endDate()
