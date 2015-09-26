@@ -1,14 +1,16 @@
 package com.parksmart
 
+import grails.plugin.springsecurity.annotation.Secured
+
+@Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
 class StaticPagesController {
 
     def index() {
-
         redirect(controller: 'staticPages', action: 'homePage')
     }
 
     def homePage(){
-        render "implement homePage UI"
+//        render "implement homePage UI"
     }
 
     def searchResults(){
