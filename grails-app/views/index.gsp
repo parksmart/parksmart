@@ -5,7 +5,7 @@
     <asset:javascript src="application.js"/>
     <asset:javascript src="signUp.js"/>
     <asset:stylesheet href="applicationManifest.css"/>
-    <meta name="layout" content="main"/>
+    <meta name="layout" content="themeMain"/>
     <title>Park Smart</title>
 
 </head>
