@@ -1,0 +1,16 @@
+//= require theme/plugins/jquery.min.js
+//= require theme/bootstrap/js/bootstrap.min.js
+//= require theme/plugins/modernizr.js
+//= require theme/plugins/rs-plugin/js/jquery.themepunch.tools.min.js
+//= require theme/plugins/rs-plugin/js/jquery.themepunch.revolution.min.js
+//= require theme/plugins/isotope/isotope.pkgd.min.js
+//= require theme/plugins/owl-carousel/owl.carousel.js
+//= require theme/plugins/magnific-popup/jquery.magnific-popup.min.js
+//= require theme/plugins/jquery.appear.js
+//= require theme/plugins/jquery.countTo.js
+//= require theme/plugins/jquery.parallax-1.1.3.js
+//= require theme/plugins/jquery.validate.js
+//= require theme/plugins/jquery.browser.js
+//= require theme/plugins/SmoothScroll.js
+//= require theme/js/template.js
+//= require theme/js/custom.js
