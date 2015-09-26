@@ -119,6 +119,8 @@ log4j.main = {
 
 // Added by the Spring Security Core plugin:
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.parksmart.User'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.parksmart.UserRole'
+grails.plugin.springsecurity.authority.className = 'com.parksmart.Role'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
     '/advertisements': ['permitAll'],
 
