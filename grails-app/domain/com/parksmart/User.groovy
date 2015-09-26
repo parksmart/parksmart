@@ -79,6 +79,7 @@ class User implements Serializable {
         user.password = registerCO.password
         user.username = registerCO.username
         user
+    }
 }
 
 
