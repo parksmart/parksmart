@@ -10,4 +10,11 @@ class UserController {
 
     }
 
+    def myProfile(Long currentUserId){
+        User currentUser = User.get(currentUserId)
+
+        List<Booking> bookingList = Booking.findAllByCustomerId(currentUserId)
+
+        [currentUser:currentUser]
+    }
 }
