@@ -10,7 +10,6 @@ class Availability {
     Point geoLocation
     AvailabilityType type
 
-
     static constraints = {
         advertisementId()
         date()
@@ -24,6 +23,12 @@ class Availability {
     static mapping = {
         location geoIndex: '2d', indexAttributes: [min: -500, max: 500]
         geoLocation geoIndex: '2dsphere', indexAttributes: [min: -500, max: 500]
+    }
+
+    static transients = ['advertisement']
+
+    Advertisement getAdvertisement() {
+        Advertisement.get(advertisementId)
     }
 
 }
