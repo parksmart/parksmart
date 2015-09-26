@@ -7,7 +7,7 @@
 
         <div class="panel-body">
             <form role="form" class="form-horizontal" id="signUpForm"
-                  data-submit-url="${createLink(controller: "user", action: "registerUser")}">
+                  data-submit-url="${createLink(controller: "register", action: "registerUser")}">
 
                 <div id="signUpErrorsDiv" role="alert" class="alert alert-danger alert-dismissible fade in"
                      style="display: none">
