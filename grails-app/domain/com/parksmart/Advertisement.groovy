@@ -1,5 +1,6 @@
 package com.parksmart
 
+import grails.mongodb.geo.Point
 import grails.rest.Resource
 
 @Resource
@@ -13,12 +14,14 @@ class Advertisement {
     Integer numberOfCycles
     Double pricePerParkingSlot
     Double pricePerCycle
+    Point geoLocation
     List<Double> location
     List<Integer> daysAvailable
     Long ownerId
 
     static constraints = {
         name()
+        geoLocation(nullable: true)
         location()
         address()
         city(nullable: true)
@@ -34,7 +37,8 @@ class Advertisement {
 
     static mapping = {
         address type: 'text'
-        location geoIndex: '2d', indexAttributes: [min: -5, max: 5]
+        location geoIndex: '2d', indexAttributes: [min: -500, max: 500]
+        geoLocation geoIndex: '2dsphere', indexAttributes: [min: -500, max: 500]
     }
 
     static mapWith = "mongo"
