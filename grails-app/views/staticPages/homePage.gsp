@@ -97,26 +97,14 @@
                         <!-- LAYER NR. 3 -->
                         <div class="tp-caption tp-resizeme sfl"
                              data-x="center"
-                             data-y="600"
+                             data-y="300"
                              data-speed="100"
                              data-start="0"
                              data-end="10000"
-                             data-endspeed="600"><a href="page-services.html"
-                                                    class="btn btn-default btn-lg">Find out how <i
+                             data-endspeed="600"><a href="#howitworks"
+                                                    class="btn btn-default btn-lg smooth-scroll">Find out how <i
                                     class="fa fa-angle-double-right pl-10"></i></a>
                         </div>
-
-                    <div class="tp-caption tp-resizeme sfl"
-                         data-x="center"
-                         data-y="300"
-                         data-speed="600"
-                         data-start="0"
-                         data-end="10000"
-                         data-endspeed="600"><a href="page-services.html"
-                                                class="btn btn-default btn-lg">Find out how <i
-                                class="fa fa-angle-double-right pl-10"></i></a>
-                    </div>
-
 
                     </li>
                     <!-- slide 1 end -->
@@ -170,11 +158,10 @@
                              data-speed="600"
                              data-start="0"
                              data-end="10000"
-                             data-endspeed="600"><a href="page-services.html"
-                                                    class="btn btn-default btn-lg">Tell Me More <i
+                             data-endspeed="600"><a href="#howitworks"
+                                                    class="btn btn-default btn-lg smooth-scroll" >Tell Me More <i
                                     class="fa fa-angle-double-right pl-10"></i></a>
                         </div>
-
                     </li>
                     <!-- slide 2 end -->
 
@@ -184,6 +171,23 @@
         <!-- slider revolution end -->
 
     </div>
+
+    <div class="sorting-filters">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <a href="#" class="btn btn-default btn-lg">I need a Parking</a>
+                </div>
+
+                <div class="col-sm-6">
+                    <a href="#" class="btn btn-default btn-lg">Rent out my Parking for few hours in a day</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- slideshow end -->
 
 </div>
