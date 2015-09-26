@@ -21,6 +21,9 @@ class TestUtil {
 
 
     static void createAdvertisements(){
+
+        List userIdList = User.list()*.id
+
         List ads = [
                 [name: 'Spacious parking with a cycle near CyberCity, Gurgaon', address: 'Belverede Apartments-2, Sector 24, Gurgaon, Haryana, India', numberOfCycles: 1,numberOfParkingSlots: 1, pricePerParkingSlot: 40, pricePerCycle: 30, location: [28.4910442, 77.0901351]],
                 [name: 'Spacious parking with a cycle in Gurgaon', address: 'House No 25, Belverede Apartments-2, Sector 24, Gurgaon, Haryana, India', numberOfCycles: 1,numberOfParkingSlots: 1, pricePerParkingSlot: 40, pricePerCycle: 30, location: [28.4910443, 77.0901350]],
@@ -38,11 +41,16 @@ class TestUtil {
 
         ads.each {Map ad->
             Advertisement advertisement = new Advertisement(ad)
+            advertisement.ownerId = getRandom(userIdList)
             save(advertisement)
         }
 
         assert Advertisement.count() == ads.size()
 
+    }
+
+    static def getRandom(List list){
+        list.get((Math.random() * list?.size() - 1) as Integer)
     }
 
     void createParkingOnlyAd(String title, User user){

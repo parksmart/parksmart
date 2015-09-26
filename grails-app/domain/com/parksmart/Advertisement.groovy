@@ -43,7 +43,7 @@ class Advertisement {
 
     static mapWith = "mongo"
 
-    static transients = ['ownerId']
+    static transients = ['owner']
 
     User getOwner() {
         User.get(ownerId)
