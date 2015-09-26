@@ -6,11 +6,7 @@ import grails.plugin.springsecurity.annotation.Secured
 class StaticPagesController {
 
     def index() {
-        redirect(controller: 'staticPages', action: 'homePage')
-    }
-
-    def homePage(){
-//        render "implement homePage UI"
+        redirect(controller: 'public', action: 'home')
     }
 
     def searchResults(){
@@ -35,5 +31,9 @@ class StaticPagesController {
 
     def createAdvertisement(){
        
+    }
+
+    def bookingReceipt(){
+
     }
 }
