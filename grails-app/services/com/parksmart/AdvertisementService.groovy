@@ -5,7 +5,6 @@ import com.mongodb.DBCollection
 import grails.mongodb.geo.Distance
 import grails.mongodb.geo.Metric
 import org.joda.time.DateTime
-import org.springframework.data.mongodb.core.aggregation.AggregationResults
 
 class AdvertisementService {
 
