@@ -8,7 +8,7 @@ class SmsService {
 
     def twilioService
 
-    def send(Long tenantId, String sender, String recipient, String body) throws SimpleInteractException {
+    def send(Long tenantId, String sender, String recipient, String body) throws Exception {
         sender = resolveSender(sender, Environment.current.name)
         recipient = resolveRecipient(recipient, Environment.current.name)
         if (Environment.current.name != 'production') {
