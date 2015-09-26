@@ -55,7 +55,7 @@ environments {
     }
     qa {
         dataSource {
-            dbCreate = "update"
+            dbCreate = "create-drop"
             url = "jdbc:mysql://localhost:3306/parksmart_test?autoReconnect=true"
         }
         grails.mongo.databaseName = "parksmart_test"
