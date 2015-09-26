@@ -219,7 +219,7 @@
                     <div class="header-left clearfix">
 
                         <!-- logo -->
-                        <div style="display: inline-flex;cursor: pointer;" onclick="gotoUrl('${createLink(controller: 'staticPages', action: 'homePage')}');" >
+                        <div style="display: inline-flex;cursor: pointer;" onclick="gotoUrl('${createLink(controller: 'public', action: 'home')}');" >
                             %{--<a href="index.html">--}%
                                 %{--<asset:image src="theme/images/logo_red.png" id="logo" alt=""/>--}%
                                 <h2>Park</h2><h2 style="color: red;font-weight: bold;">Smart</h2>
@@ -340,10 +340,10 @@
                             <h2>Links</h2>
                             <nav>
                                 <ul class="nav nav-pills nav-stacked">
-                                    <li><a href="${createLink(controller: 'staticPages', action: 'homePage')}">Home</a></li>
-                                    <li class="active"><a href="${createLink(controller: 'staticPages', action: 'homePage', fragment: 'benefits')}">Benefits</a></li>
-                                    <li><a href="${createLink(controller: 'staticPages', action: 'homePage', fragment: 'howitworks')}">How it works</a></li>
-                                    <li><a href="${createLink(controller: 'staticPages', action: 'homePage', fragment: 'team')}">Team</a></li>
+                                    <li><a href="${createLink(controller: 'public', action: 'home')}">Home</a></li>
+                                    <li class="active"><a href="${createLink(controller: 'public', action: 'home', fragment: 'benefits')}">Benefits</a></li>
+                                    <li><a href="${createLink(controller: 'public', action: 'home', fragment: 'howitworks')}">How it works</a></li>
+                                    <li><a href="${createLink(controller: 'public', action: 'home', fragment: 'team')}">Team</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -376,10 +376,10 @@
                             </div>
                             <div class="collapse navbar-collapse" id="navbar-collapse-2">
                                 <ul class="nav navbar-nav">
-                                    <li><a href="${createLink(controller: 'staticPages', action: 'homePage')}">Home</a></li>
-                                    <li><a href="${createLink(controller: 'staticPages', action: 'homePage', fragment: 'benefits')}">Benefits</a></li>
-                                    <li><a href="${createLink(controller: 'staticPages', action: 'homePage', fragment: 'howitworks')}">How it works</a></li>
-                                    <li><a href="${createLink(controller: 'staticPages', action: 'homePage', fragment: 'team')}">Team</a></li>
+                                    <li><a href="${createLink(controller: 'public', action: 'home')}">Home</a></li>
+                                    <li><a href="${createLink(controller: 'public', action: 'home', fragment: 'benefits')}">Benefits</a></li>
+                                    <li><a href="${createLink(controller: 'public', action: 'home', fragment: 'howitworks')}">How it works</a></li>
+                                    <li><a href="${createLink(controller: 'public', action: 'home', fragment: 'team')}">Team</a></li>
 
                                 </ul>
                             </div>
