@@ -11,7 +11,7 @@ class TwilioService {
 
     def grailsApplication
 
-    String send(String sender, String recipient, String body) throws RuntimeException {
+    String send(String sender, String recipient, String body) throws Exception {
         TwilioRestClient client = getTwilioRestClient()
         if (client) {
             MessageFactory factory = client.getAccount().getMessageFactory();
