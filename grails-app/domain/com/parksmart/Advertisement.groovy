@@ -16,7 +16,7 @@ class Advertisement {
     Double pricePerCycle
     Point geoLocation
     List<Double> location
-    List<Integer> daysAvailable
+    List<DayType> daysAvailable
     Long ownerId
 
     static constraints = {
