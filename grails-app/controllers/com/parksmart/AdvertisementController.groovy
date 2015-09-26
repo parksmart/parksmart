@@ -1,22 +1,37 @@
 package com.parksmart
 
+import com.mongodb.DBCursor
+import grails.mongodb.geo.Point
 import grails.plugin.springsecurity.annotation.Secured
+import grails.rest.RestfulController
+import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
 
 @Secured('IS_AUTHENTICATED_ANONYMOUSLY')
 @Transactional(readOnly = true)
-class AdvertisementController {
+class AdvertisementController extends RestfulController {
 
+    static responseFormats = ['json', 'xml']
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    AdvertisementController() {
+        super(Advertisement)
+    }
+
     def index(AdvertisementSearchCO advertisementSearchCO) {
+        bindData(advertisementSearchCO, params)
+        advertisementSearchCO?.validate()
         if (advertisementSearchCO.hasErrors()) {
             respond advertisementSearchCO.errors
             return
         }
-        respond(Advertisement.findAllByLocationWithinCircle([advertisementSearchCO?.center, advertisementSearchCO?.radiusInKm]) ?: [])
+        DBCursor cursor = Advertisement.collection.find(['geoLocation': ['$geoWithin': ['$centerSphere': [advertisementSearchCO?.center, (0d + advertisementSearchCO?.radiusInKm / 6371)]]]])
+        List<Advertisement> advertisementList = []
+        while(cursor.hasNext()) {
+            advertisementList << (cursor.next() as Advertisement)
+        }
+        respond advertisementList
     }
 
     def show(Advertisement advertisementInstance) {
@@ -35,11 +50,12 @@ class AdvertisementController {
         }
 
         if (advertisementInstance.hasErrors()) {
-            respond advertisementInstance.errors, view:'create'
+            respond advertisementInstance.errors, view: 'create'
             return
         }
 
-        advertisementInstance.save flush:true
+        advertisementInstance.geoLocation = new Point(advertisementInstance.location[0], advertisementInstance.location[1])
+        advertisementInstance.save flush: true
 
         request.withFormat {
             form multipartForm {
@@ -62,18 +78,18 @@ class AdvertisementController {
         }
 
         if (advertisementInstance.hasErrors()) {
-            respond advertisementInstance.errors, view:'edit'
+            respond advertisementInstance.errors, view: 'edit'
             return
         }
 
-        advertisementInstance.save flush:true
+        advertisementInstance.save flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Advertisement.label', default: 'Advertisement'), advertisementInstance.id])
                 redirect advertisementInstance
             }
-            '*'{ respond advertisementInstance, [status: OK] }
+            '*' { respond advertisementInstance, [status: OK] }
         }
     }
 
@@ -85,14 +101,14 @@ class AdvertisementController {
             return
         }
 
-        advertisementInstance.delete flush:true
+        advertisementInstance.delete flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Advertisement.label', default: 'Advertisement'), advertisementInstance.id])
-                redirect action:"index", method:"GET"
+                redirect action: "index", method: "GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -102,7 +118,7 @@ class AdvertisementController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'advertisement.label', default: 'Advertisement'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 }
