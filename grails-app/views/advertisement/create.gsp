@@ -11,7 +11,7 @@
 
 <div class="container-fluid">
 
-    <legend>Advertisement</legend>
+    <legend>Rent out my parking / cycle</legend>
 
     <g:render template="/templates/errorContainer" model="[object: advertisementInstance]"/>
 
@@ -24,12 +24,12 @@
 
         <div class="row">
 
-            <div class="col-sm-6">
+            <div class="col-sm-8">
                 <form:textField label="Name/Title" name="name" value="${advertisementInstance?.name}"/>
                 <form:textField label="Address" onFocus="geolocate()" name="address" value="${advertisementInstance?.address}"/>
 
                 <div class="form-group">
-                    <label for="numberOfParkingSlots" class="col-sm-3 control-label">Number of parking slots</label>
+                    <label for="numberOfParkingSlots" class="col-sm-3 control-label">Parking slot count</label>
 
                     <div class="col-sm-3">
                         <input id="numberOfParkingSlots" type="number" name="numberOfParkingSlots" min="0"
@@ -37,7 +37,9 @@
                                value="${advertisementInstance?.numberOfParkingSlots}" placeholder="Number of parking slots"/>
                     </div>
 
-                    <label for="pricePerParkingSlot" class="col-sm-3 control-label">Price per parking slot</label>
+                    <label for="pricePerParkingSlot" class="col-sm-3 control-label">Charges per slot per day
+                        %{--<i class="fa fa-rupee"></i>--}%
+                    </label>
 
                     <div class="col-sm-3">
                         <input id="pricePerParkingSlot" type="number" name="pricePerParkingSlot" min="0"
@@ -55,7 +57,7 @@
                                value="${advertisementInstance?.numberOfCycles}" placeholder="Number of cycles"/>
                     </div>
 
-                    <label for="pricePerCycle" class="col-sm-3 control-label">Price per cycle</label>
+                    <label for="pricePerCycle" class="col-sm-3 control-label">Charges/ day <i class="fa fa-rupee"></i></label>
 
                     <div class="col-sm-3">
                         <input type="number" id="pricePerCycle" name="pricePerCycle" min="0" class="form-control"
@@ -82,7 +84,7 @@
                 </div>
             </div>
 
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <div id="map" class="col-sm-12" style="height: 300px;"></div>
             </div>
 
