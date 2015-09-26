@@ -10,7 +10,11 @@ class RegisterCO {
     String mobileNumber
 
     static constraints = {
-        username blank: false
+        username blank: false, email: true, validator: { val, obj ->
+            if (User.countByUsername(val)) {
+                return "com.parksmart.RegisterCO.username.unique.error"
+            }
+        }
         password blank: false
         name blank: false
         mobileNumber nullable: true
