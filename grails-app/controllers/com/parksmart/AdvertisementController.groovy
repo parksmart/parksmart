@@ -12,7 +12,9 @@ import static org.springframework.http.HttpStatus.*
 @Transactional(readOnly = true)
 class AdvertisementController extends RestfulController {
 
-    static responseFormats = ['json', 'xml']
+    def springSecurityService
+
+    static responseFormats = ['html', 'json', 'xml']
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     AdvertisementController() {
@@ -39,18 +41,21 @@ class AdvertisementController extends RestfulController {
     }
 
     def create() {
-        respond new Advertisement(params)
+        User user = springSecurityService.currentUser as User
+        Advertisement advertisementInstance = Advertisement.findByOwner(user) ?: new Advertisement()
+        respond advertisementInstance
     }
 
     @Transactional
     def save(Advertisement advertisementInstance) {
+        println params
         if (advertisementInstance == null) {
             notFound()
             return
         }
 
         if (advertisementInstance.hasErrors()) {
-            respond advertisementInstance.errors, view: 'create'
+            respond advertisementInstance, view: 'create'
             return
         }
 
@@ -60,7 +65,7 @@ class AdvertisementController extends RestfulController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'advertisement.label', default: 'Advertisement'), advertisementInstance.id])
-                redirect advertisementInstance
+                respond advertisementInstance, view: 'create'
             }
             '*' { respond advertisementInstance, [status: CREATED] }
         }
