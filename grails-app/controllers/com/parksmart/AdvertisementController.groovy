@@ -18,6 +18,7 @@ class AdvertisementController extends RestfulController {
 
     static responseFormats = ['html', 'json', 'xml']
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static final Integer DEFAULT_RADIUS = 5
 
     AdvertisementController() {
         super(Advertisement)
@@ -30,7 +31,7 @@ class AdvertisementController extends RestfulController {
             respond advertisementSearchCO.errors
             return
         }
-        respond Advertisement.findAllByGeoLocationGeoWithin(Sphere.valueOf([advertisementSearchCO?.center, new Distance(advertisementSearchCO?.radiusInKm, Metric.KILOMETERS).inRadians()]))
+        respond Advertisement.findAllByGeoLocationGeoWithin(Sphere.valueOf([advertisementSearchCO?.center, new Distance(advertisementSearchCO?.radiusInKm ?: DEFAULT_RADIUS, Metric.KILOMETERS).inRadians()]))
     }
 
     def show(Advertisement advertisementInstance) {
