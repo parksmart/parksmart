@@ -7,6 +7,7 @@ class RegisterController {
 
     def userService
     def messageSource
+    def springSecurityService
 
     def registerUser(RegisterCO registerCO) {
         println("RegisterCO: ${registerCO.properties}")
@@ -29,4 +30,14 @@ class RegisterController {
         return errorMessages
     }
 
+    def login() {
+        Map responseMap = [status: false]
+        if(params.get('j_password') && params.get('j_username')){
+            User user = User.findByUsernameAndPassword(params.j_username, params.get('j_password'));
+            if (user) {
+                responseMap = [status: true, userId: user.id]
+            }
+        }
+        render(responseMap as JSON)
+    }
 }

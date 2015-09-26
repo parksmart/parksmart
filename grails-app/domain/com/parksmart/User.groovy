@@ -45,7 +45,7 @@ class User implements Serializable {
 	}
 
 	def beforeInsert() {
-		encodePassword()
+//		encodePassword()
 	}
 
 	def beforeUpdate() {
