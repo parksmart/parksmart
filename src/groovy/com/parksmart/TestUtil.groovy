@@ -49,7 +49,24 @@ class TestUtil {
             save(advertisement)
         }
         assert Advertisement.count() == ads.size()
+    }
 
+    static void createBookings() {
+        Advertisement.list().each { Advertisement advertisement ->
+            println "Creating booking for ${advertisement.id}"
+            int userCount = User.count()
+            Booking booking = new Booking(advertisementId: advertisement.id,
+                    ownerId: advertisement.ownerId,
+                    customerId: User.get(Math.random() * userCount)?.id ?: 1,
+                    startDate: new Date() + 5,
+                    endDate: new Date() + 10,
+                    amount: 100,
+                    isParking: advertisement.id % 3 ? false : true,
+                    isCycle: advertisement.id % 4 ? false : true
+            )
+            save(booking)
+        }
+        assert Booking.count() >= Advertisement.count() / 2
     }
 
     static def getRandom(List list) {

@@ -27,6 +27,7 @@ class BootStrap {
     private void bootstrapDummyData(){
         createUsers()
         TestUtil.createAdvertisements()
+        TestUtil.createBookings()
         Advertisement.list()?.each {
             advertisementService.createAvailabilities(it)
         }
@@ -43,7 +44,5 @@ class BootStrap {
             UserRole.create(user, userRole, true )
         }
     }
-
-
 
 }
