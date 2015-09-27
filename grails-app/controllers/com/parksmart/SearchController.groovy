@@ -6,7 +6,6 @@ import grails.plugin.springsecurity.annotation.Secured
 class SearchController {
 
     def index() {
-
     }
 
     def renderCards(){

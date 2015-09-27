@@ -24,17 +24,17 @@
                 <div class="form-group">
                     <label class="pull-left" for="radiusInKm">Radius</label>
                     <input type="number" min="0" class="form-control" id="radiusInKm" name="radiusInKm"
-                           placeholder="Radius In Km">
+                           placeholder="Radius In Km" value="5">
                 </div>
 
                 <div class="form-group">
                     <label class="pull-left" for="startDate">Start Date</label>
-                    <input type="date" class="form-control" id="startDate" name="startDate" placeholder="Start Date">
+                    <input type="date" class="form-control" id="startDate" name="startDate" placeholder="Start Date" value="${new Date()?.format("yyyy-MM-dd")}">
                 </div>
 
                 <div class="form-group">
                     <label class="pull-left" for="endDate">End Date</label>
-                    <input type="date" class="form-control" id="endDate" name="endDate" placeholder="End Date">
+                    <input type="date" class="form-control" id="endDate" name="endDate" placeholder="End Date" value="${(new Date() + 7)?.format("yyyy-MM-dd")}">
                 </div>
 
 
