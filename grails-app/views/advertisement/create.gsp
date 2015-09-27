@@ -69,7 +69,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label"> Days Available</label>
 
-                    <div class="col-sm-9">
+                    <div class="col-sm-3">
 
                         <g:each in="${DayType.values()}" var="day">
                             <div class="time-slot-check-box">
@@ -79,6 +79,17 @@
                                             value="${day}"/>
                             </div>
                         </g:each>
+
+                    </div>
+
+                    <label for="pricePerCycle" class="col-sm-3 control-label">Timings</label>
+
+                    <div class="col-sm-3">
+                        <input type="time" id="startTime" name="startTime" min="0" class="form-control"
+                               value="${advertisementInstance?.startTime?:'08:30'}" placeholder="Price per cycle"/>
+
+                        <input type="time" id="endTime" name="endTime" min="0" class="form-control"
+                               value="${advertisementInstance?.endTime?:'19:00'}" placeholder="Price per cycle"/>
 
                     </div>
                 </div>

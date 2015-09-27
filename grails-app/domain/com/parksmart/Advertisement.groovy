@@ -19,6 +19,9 @@ class Advertisement {
     List<DayType> daysAvailable
     Long ownerId
 
+    String startTime
+    String endTime
+
     static constraints = {
         name()
         geoLocation(nullable: true)
