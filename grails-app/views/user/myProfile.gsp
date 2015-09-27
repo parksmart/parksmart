@@ -46,7 +46,7 @@
                 <h3>
                     Showing the advertisements posted by you
                 </h3>
-                <g:render template="/search/renderCards" model="[advertisements : advertisementList, ifViewerIsOwner:true]"/>
+                <g:render template="/search/renderCards" model="[advertisements : myAdvertisementList , ifViewerIsOwner:true]"/>
             </g:else>
         </div>
         <div id="rentOutAds" class="tab-pane fade">
@@ -62,11 +62,11 @@
                     Showing bookings received against your advertisements.
                 </h3>
 
-                <g:render template="/search/renderCards" model="[advertisements : rentOutAdvertisementList, ifViewerIsOwner:true]"/>
+                %{--<g:render template="/search/renderCards" model="[advertisements : my, ifViewerIsOwner:true]"/>--}%
             </g:else>
         </div>
         <div id="bookings" class="tab-pane fade">
-            <g:if test="${!bookingList}">
+            <g:if test="${!myBookingList}">
                 <h3>
                     You have not booked any parking or bicycles yet.
                 </h3>
@@ -78,46 +78,74 @@
                     Showing bookings made by you
                 </h3>
                 <div class="row">
-                    <g:set var="dateFormat" value="MM/dd/yyyy"/>
-                    <table class="table table-hover">
-                        <tr>
-                            <th>Start Date</th>
-                            <th>End Date</th>
-                            <th>Parking</th>
-                            <th>Bicycle</th>
-                            <th>Amount</th>
-                        </tr>
-                        <g:each in="${bookingList}" var="booking">
+
+
+                    <div class="col-md-8 col-sm-9 " style="position: absolute; left: 0px; top: 0px;">
+                        <div class="listing-item">
+                            <div class="overlay-container">
+                                <img src="images/product-1.png" alt="">
+                                <a href="shop-product.html" class="overlay small">
+                                    <i class="fa fa-plus"></i>
+                                    <span>View Details</span>
+                                </a>
+                            </div>
+                            <div class="listing-item-body clearfix">
+                                <h3 class="title"><a href="shop-product.html">Adipisicing 7.7" Tempora 4.2</a></h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae tempora debitis, sed illo officiis.</p>
+                                <span class="price">$199.00</span>
+                                <div class="elements-list pull-right">
+                                    <a href="#" class="wishlist" title="wishlist"><i class="fa fa-heart-o"></i></a>
+                                    <a href="#"><i class="fa fa-shopping-cart pr-10"></i>Add to Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    %{--<g:set var="dateFormat" value="MM/dd/yyyy"/>--}%
+                    %{--<table class="table table-hover">--}%
+                        %{--<tr>--}%
+                            %{--<th>Start Date</th>--}%
+                            %{--<th>End Date</th>--}%
+                            %{--<th>Parking</th>--}%
+                            %{--<th>Bicycle</th>--}%
+                            %{--<th>Amount</th>--}%
+                        %{--</tr>--}%
+                        %{--<g:each in="${myBookingList}" var="booking">--}%
                         %{--<g:each in="${[1, 2, 3 ,4]}" var="booking">--}%
-                            <tr>
-                                <td><g:formatDate date="${booking.startDate}" format="${dateFormat}"/> </td>
+                            %{--<tr>--}%
+                                %{--<td><g:formatDate date="${booking.startDate}" format="${dateFormat}"/> </td>--}%
                                 %{--<td><g:formatDate date="${new Date()}" format="${dateFormat}"/> </td>--}%
-                                <td><g:formatDate date="${booking.endDate}" format="${dateFormat}"/></td>
+                                %{--<td><g:formatDate date="${booking.endDate}" format="${dateFormat}"/></td>--}%
                                 %{--<td><g:formatDate date="${new Date().minus(5)}" format="${dateFormat}"/></td>--}%
-                                <td>
-                                    <g:if test="${booking?.isParking}">
-                                        <i class="fa fa-2x fa-car"></i>
-                                    </g:if>
-                                </td>
-                                <td>
-                                    <g:if test="${booking?.isParking}">
-                                        <i class="fa fa-2x fa-bicycle"></i>
-                                    </g:if>
-                                </td>
-                                <td>
+                                %{--<td>--}%
+                                    %{--<g:if test="${booking?.isParking}">--}%
+                                        %{--<i class="fa fa-2x fa-car"></i>--}%
+                                    %{--</g:if>--}%
+                                %{--</td>--}%
+                                %{--<td>--}%
+                                    %{--<g:if test="${booking?.isParking}">--}%
+                                        %{--<i class="fa fa-2x fa-bicycle"></i>--}%
+                                    %{--</g:if>--}%
+                                %{--</td>--}%
+                                %{--<td>--}%
                                     %{--${booking * 100}--}%
-                                    ${booking.amount}
-                                </td>
-                            </tr>
-                        </g:each>
+                                    %{--${booking.amount}--}%
+                                %{--</td>--}%
+                            %{--</tr>--}%
+                        %{--</g:each>--}%
 
-                        <tr>
-                            <td colspan="5">
-                                You do not have any bookings yet.
-                            </td>
-                        </tr>
+                        %{--<tr>--}%
+                            %{--<td colspan="5">--}%
+                                %{--You do not have any bookings yet.--}%
+                            %{--</td>--}%
+                        %{--</tr>--}%
 
-                    </table>
+                    %{--</table>--}%
                 </div>
             </g:else>
 

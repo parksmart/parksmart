@@ -45,4 +45,19 @@ class Booking {
     }
 
 
+
+    static transients = ['advertisement', 'owner', 'customer']
+
+    Advertisement getAdvertisement(){
+        Advertisement.get(advertisementId)
+    }
+
+    User getOwner(){
+        User.get(ownerId)
+    }
+
+    User getCustomer(){
+        User.get(customerId)
+    }
+
 }
