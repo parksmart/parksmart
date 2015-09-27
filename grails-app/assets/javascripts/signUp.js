@@ -13,7 +13,7 @@ var submitRegistrationForm = function (formId) {
                 }
                 showErrorMessage(errorString);
             } else {
-//                window.location.href = "/login/auth";
+                window.location.href = "/login/auth";
             }
         }
     });

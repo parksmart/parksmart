@@ -12,7 +12,7 @@ class RegisterCO {
     static constraints = {
         username blank: false, email: true, validator: { val, obj ->
             if (User.countByUsername(val)) {
-                return "com.parksmart.RegisterCO.username.unique.error"
+                return "registerCO.username.unique.error"
             }
         }
         password blank: false
