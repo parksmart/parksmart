@@ -18,12 +18,14 @@
         <div class="col-sm-6">
 
             <div class="row">
-                <g:if test="${bookingInstance?.isParking}">
-                    <i class="fa fa-automobile fa-3x"></i>
-                </g:if>
-                <g:if test="${bookingInstance?.isCycle}">
-                    <i class="fa fa-bicycle fa-3x"></i>
-                </g:if>
+                <div class="col-sm-12">
+                    <g:if test="${bookingInstance?.isParking}">
+                        <i class="fa fa-automobile fa-3x"></i>
+                    </g:if>
+                    <g:if test="${bookingInstance?.isCycle}">
+                        <i class="fa fa-bicycle fa-3x"></i>
+                    </g:if>
+                </div>
             </div>
 
             <div class="row">
