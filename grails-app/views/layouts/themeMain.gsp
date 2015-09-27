@@ -362,7 +362,6 @@
                                     </ul>
                                 </div>
                             </div>
-                            <a href="page-about.html" class="link"><span>Read More</span></a>
                         </div>
                     </div>
                     <div class="space-bottom hidden-lg hidden-xs"></div>
