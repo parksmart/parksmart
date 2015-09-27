@@ -158,3 +158,19 @@ grails.plugins.springsecurity.logout.afterLogoutUrl = '/public/home'
 // Twilio
 twilio.testAccountSid = "ACc481462cec880ec092d72297e88c2940"
 twilio.testAuthToken = "d22cdbd45f9582df06d9175f971c15b1"
+
+
+grails {
+    mail {
+        host = "smtp.gmail.com"
+        port = 465
+        username = "parksmartweb@gmail.com"
+        password = "igdefault"
+        props = ["mail.smtp.auth":"true",
+                 "mail.smtp.socketFactory.port":"465",
+                 "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+                 "mail.smtp.socketFactory.fallback":"false"]
+
+    }
+}
+grails.mail.default.from="parksmartweb@gmail.com"
