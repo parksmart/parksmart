@@ -487,7 +487,7 @@
   Plugin.prototype.rendererPerso = function () {
     //check if this is the last social website to launch render
     var shareCount = 0;
-    for (e in this.options.count) { shareCount++; }
+    for (var e in this.options.count) { shareCount++; }
     if(shareCount === this.options.shareTotal){
       this.options.render(this, this.options);
     }
