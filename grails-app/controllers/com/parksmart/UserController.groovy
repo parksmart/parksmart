@@ -26,4 +26,14 @@ class UserController {
                 myRentOutBookings: myRentOutBookings
         ]
     }
+
+
+
+    def test(){
+        Long currentUserId = params.currentUserId
+        println("currentUserId: ${currentUserId}")
+        List<Booking> myRentOutBookings = Booking.findAllByOwnerId(currentUserId)
+        println("myRentOutBookings: ${myRentOutBookings*.id}")
+        render"DONE!!!!"
+    }
 }
