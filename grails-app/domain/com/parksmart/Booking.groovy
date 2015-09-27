@@ -25,6 +25,7 @@ class Booking {
         advertisementId()
         isParking(nullable: true)
         isCycle(nullable: true)
+        address(nullable: true)
         ownerId()
         customerId()
         startDate()
