@@ -19,41 +19,45 @@
 
             <div class="row">
                 <g:if test="${bookingInstance?.isParking}">
-                    <i class="fa fa-automobile 3x"></i>
+                    <i class="fa fa-automobile fa-3x"></i>
                 </g:if>
                 <g:if test="${bookingInstance?.isCycle}">
-                    <i class="fa fa-bicycle 3x"></i>
+                    <i class="fa fa-bicycle fa-3x"></i>
                 </g:if>
             </div>
 
-            <dl >
-                <dt>Booking Date</dt>
-                <dd>${bookingInstance?.dateCreated?.format('dd-MMM-yyyy HH:mm:aa')}</dd>
-            </dl>
+            <div class="row">
+                <div class="col-sm-12">
+                    <dl >
+                        <dt>Booking Date</dt>
+                        <dd>${bookingInstance?.dateCreated?.format('dd-MMM-yyyy HH:mm:aa')}</dd>
+                    </dl>
 
-            <dl >
-                <dt>Title</dt>
-                <dd>${bookingInstance?.advertisement?.name}</dd>
-            </dl>
+                    <dl >
+                        <dt>Title</dt>
+                        <dd>${bookingInstance?.advertisement?.name}</dd>
+                    </dl>
 
-            <dl >
-                <dt>Property Owner</dt>
-                <dd class="text-capitalize">${bookingInstance?.owner?.name} - ${bookingInstance?.owner?.mobileNumber}</dd>
-            </dl>
-            <dl >
-                <dt>Booked By</dt>
-                <dd class="text-capitalize">${bookingInstance.customer?.name} - ${bookingInstance?.customer?.mobileNumber}</dd>
-            </dl>
+                    <dl >
+                        <dt>Property Owner</dt>
+                        <dd class="text-capitalize">${bookingInstance?.owner?.name} - ${bookingInstance?.owner?.mobileNumber}</dd>
+                    </dl>
+                    <dl >
+                        <dt>Booked By</dt>
+                        <dd class="text-capitalize">${bookingInstance.customer?.name} - ${bookingInstance?.customer?.mobileNumber}</dd>
+                    </dl>
 
-            <dl>
-                <dt>Booking period</dt>
-                <dd>${bookingInstance.startDate?.format('dd-MMM-yyyy')} - ${bookingInstance.endDate?.format('dd-MMM-yyyy')}</dd>
-            </dl>
+                    <dl>
+                        <dt>Booking period</dt>
+                        <dd>${bookingInstance.startDate?.format('dd-MMM-yyyy')} - ${bookingInstance.endDate?.format('dd-MMM-yyyy')}</dd>
+                    </dl>
 
-            <dl >
-                <dt>Amount</dt>
-                <dd>${bookingInstance?.amount}</dd>
-            </dl>
+                    <dl >
+                        <dt>Amount</dt>
+                        <dd>${bookingInstance?.amount}</dd>
+                    </dl>
+                </div>
+            </div>
 
         </div>
         <div class="col-sm-6">

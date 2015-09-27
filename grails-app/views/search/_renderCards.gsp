@@ -1,3 +1,5 @@
+
+
 <g:each in="${advertisements}" var="advertisement">
     <div class="col-sm-12">
         <div class="panel panel-default">
@@ -33,6 +35,14 @@
                     <input type="hidden" id="username" value="${advertisement?.owner?.name}"/>
                     <input type="hidden" id="advertisementId" value="${advertisement?.id}"/>
 
+                </div>
+
+
+            </div>
+
+            <div class="row">
+                <div class="col-sm-2 col-sm-offset-7">
+                    <a href="${createLink(controller: 'advertisement', action: 'show', id: advertisement?.id)}" class="btn btn-default">View Details</a>
                 </div>
             </div>
             <g:if test="${!ifViewerIsOwner}">

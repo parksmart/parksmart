@@ -2,7 +2,8 @@
     <div class="col-sm-12">
         <div class="panel panel-default">
             <div class="panel-heading text-center">
-                <b>${booking?.advertisement?.name}</b>
+                <b>${booking?.bookingId}</b>
+                <b> - ${booking?.advertisement?.name} </b>
             </div>
 
             <div class="panel-body">
@@ -28,6 +29,10 @@
                     <ps:fieldValue fieldName="End Date" value="${booking?.endDate?.format("MM/dd/yyyy")}"/>
                     <ps:fieldValue fieldName="Amount" value="${booking?.amount}"/>
 
+                </div>
+
+                <div class="col-sm-2">
+                    <a href="${createLink(controller: 'booking', action: 'show', id: booking?.id)}" class="btn btn-default">View Details</a>
                 </div>
             </div>
 

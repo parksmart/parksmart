@@ -34,7 +34,7 @@
                     <div class="col-sm-3">
                         <input id="numberOfParkingSlots" type="number" name="numberOfParkingSlots" min="0"
                                class="form-control"
-                               value="${advertisementInstance?.numberOfParkingSlots}" placeholder="Number of parking slots"/>
+                               value="${advertisementInstance?.numberOfParkingSlots?:1}" placeholder="Number of parking slots"/>
                     </div>
 
                     <label for="pricePerParkingSlot" class="col-sm-3 control-label">Charges per slot per day
@@ -54,7 +54,7 @@
 
                     <div class="col-sm-3">
                         <input type="number" id="numberOfCycles" name="numberOfCycles" min="0" class="form-control"
-                               value="${advertisementInstance?.numberOfCycles}" placeholder="Number of cycles"/>
+                               value="${advertisementInstance?.numberOfCycles?:1}" placeholder="Number of cycles"/>
                     </div>
 
                     <label for="pricePerCycle" class="col-sm-3 control-label">Charges per cycle per day </label>
