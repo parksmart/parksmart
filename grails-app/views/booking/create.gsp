@@ -64,12 +64,14 @@
 
             <dl class="dl-horizontal">
                 <dt>Parking</dt>
-                <dd>Available for Sep15-Sep20, Sep22-Sep28 and Sep30 at Rs 30/- per day.</dd>
+                <dd>$Available for {advertisementResult?.parkingAvailabilityRange} at Rs 30/- per day.</dd>
+                %{--<dd>Available for Sep15-Sep20, Sep22-Sep28 and Sep30 at Rs 30/- per day.</dd>--}%
             </dl>
 
             <dl class="dl-horizontal">
                 <dt>Cycle</dt>
-                <dd>Available for Sep15-Sep20, Sep22-Sep28 and Sep30 at Rs 30/- per day.</dd>
+                <dd>Available for ${advertisementResult?.cycleAvailabilityRange} at Rs 30/- per day.</dd>
+                %{--<dd>Available for Sep15-Sep20, Sep22-Sep28 and Sep30 at Rs 30/- per day.</dd>--}%
             </dl>
 
             <a href="page-services.html" class="">View more Details</a>

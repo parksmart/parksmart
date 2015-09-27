@@ -47,9 +47,33 @@ class AdvertisementService {
         }
     }
 
+    AdvertisementResult createInstanceOfAdvertisementResult(Advertisement advertisement) {
+        AggregationOutput aggregationOutput = aggregateAndFindFreeAdvertisementSlots(advertisement?.id)
+        Map aggregationResult = aggregationOutput?.results()?.getAt(0)
+        AdvertisementResult advertisementResult = new AdvertisementResult(advertisement)
+        if (aggregationResult?.availabilityRange?.size() > 0 && aggregationResult?.availabilityRange[0]?.type == AvailabilityType.PARKING.toString()) {
+            advertisementResult.parkingAvailabilityRange = convertSequenceOfNumToArrayOfRange(aggregationResult?.availabilityRange[0]?.value)
+        }
+        if (aggregationResult?.availabilityRange?.size() > 1 && aggregationResult?.availabilityRange[1]?.type == AvailabilityType.PARKING.toString()) {
+            advertisementResult.parkingAvailabilityRange = convertSequenceOfNumToArrayOfRange(aggregationResult?.availabilityRange[1]?.value)
+        }
+        if (aggregationResult?.availabilityRange?.size() > 0 && aggregationResult?.availabilityRange[0]?.type == AvailabilityType.CYCLE.toString()) {
+            advertisementResult.cycleAvailabilityRange = convertSequenceOfNumToArrayOfRange(aggregationResult?.availabilityRange[0]?.value)
+        }
+        if (aggregationResult?.availabilityRange?.size() > 1 && aggregationResult?.availabilityRange[1]?.type == AvailabilityType.CYCLE.toString()) {
+            advertisementResult.cycleAvailabilityRange = convertSequenceOfNumToArrayOfRange(aggregationResult?.availabilityRange[1]?.value)
+        }
+        advertisementResult
+    }
+
     List<AdvertisementResult> findAllAdvertisements(AdvertisementSearchCO advertisementSearchCO) {
         AggregationOutput aggregationOutput = aggregateAndFindAvailability(advertisementSearchCO)
-        List<AdvertisementResult> advertisementResultsList = aggregationOutput?.results()?.inject([]) { List<AdvertisementResult> advertisementResults, aggregationResult ->
+        List<AdvertisementResult> advertisementResultsList = extractAdvertisementResultFromAggregationOutput(aggregationOutput)
+        advertisementResultsList
+    }
+
+    List<AdvertisementResult> extractAdvertisementResultFromAggregationOutput(AggregationOutput aggregationOutput) {
+        aggregationOutput?.results()?.inject([]) { List<AdvertisementResult> advertisementResults, aggregationResult ->
             AdvertisementResult advertisementResult = new AdvertisementResult(Advertisement.get(aggregationResult?.advertisementId))
             if (aggregationResult?.availabilityRange?.size() > 0 && aggregationResult?.availabilityRange[0]?.type == AvailabilityType.PARKING.toString()) {
                 advertisementResult.parkingAvailabilityRange = convertSequenceOfNumToArrayOfRange(aggregationResult?.availabilityRange[0]?.value)
@@ -65,8 +89,7 @@ class AdvertisementService {
             }
             advertisementResults << advertisementResult
             advertisementResults
-        }
-        advertisementResultsList
+        } as List<AdvertisementResult>
     }
 
     AggregationOutput aggregateAndFindAvailability(AdvertisementSearchCO advertisementSearchCO) {
@@ -76,6 +99,21 @@ class AdvertisementService {
                 ['$match': ['date'       : ['$gt': advertisementSearchCO?.startDate, '$lt': advertisementSearchCO?.endDate],
                             'geoLocation': ['$geoWithin': ['$centerSphere': [advertisementSearchCO?.center, new Distance(advertisementSearchCO?.radiusInKm, Metric.KILOMETERS).inRadians()]]]]
                 ],
+                ['$sort': ['date': 1]],
+                ['$group': ['_id'            : ['advertisementId': '$advertisementId', 'type': '$type'],
+                            'advertisementId': ['$first': '$advertisementId'], 'type': ['$first': '$type'], 'availabilityRange': ['$push': '$date']
+                ]],
+                ['$group': ['_id'            : ['advertisementId': '$advertisementId'],
+                            'advertisementId': ['$first': '$advertisementId'], 'availabilityRange': ['$push': ['type': '$type', 'value': '$availabilityRange']]
+                ]])
+    }
+
+
+    AggregationOutput aggregateAndFindFreeAdvertisementSlots(Long advertisementId) {
+        DBCollection availabilityCollection = Availability.collection
+
+        availabilityCollection.aggregate(
+                ['$match': ['advertisementId'       : advertisementId]],
                 ['$sort': ['date': 1]],
                 ['$group': ['_id'            : ['advertisementId': '$advertisementId', 'type': '$type'],
                             'advertisementId': ['$first': '$advertisementId'], 'type': ['$first': '$type'], 'availabilityRange': ['$push': '$date']
