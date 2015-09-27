@@ -61,7 +61,6 @@ class TestUtil {
 
     static void createBookings() {
         Advertisement.list().each { Advertisement advertisement ->
-            println "Creating booking for ${advertisement.id}"
             int userCount = User.count()
             Booking booking = new Booking(advertisementId: advertisement.id,
                     ownerId: advertisement.ownerId,

@@ -153,7 +153,7 @@ grails.plugin.springsecurity.facebook.domain.classname='com.parksmart.FacebookUs
 grails.plugin.springsecurity.facebook.appId='851614561560453'
 grails.plugin.springsecurity.facebook.secret='651167186a2e7ff5b462908c4c24fba0'
 grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/user/myProfile'
-grails.plugins.springsecurity.logout.afterLogoutUrl = '/public/home'
+grails.plugin.springsecurity.logout.afterLogoutUrl = '/public/home'
 
 // Twilio
 twilio.testAccountSid = "ACc481462cec880ec092d72297e88c2940"

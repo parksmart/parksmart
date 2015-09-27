@@ -33,8 +33,11 @@
                     <g:if test="${advertisement?.numberOfCycles}">
                         <ps:fieldValue fieldName="Cycle Rent/Day" value="${advertisement?.pricePerCycle}"/>
                     </g:if>
+
+                    %{--These hidden field are requied for the mobile site--}%
                     <input type="hidden" id="username" value="${advertisement?.owner?.name}"/>
                     <input type="hidden" id="advertisementId" value="${advertisement?.id}"/>
+                    <input type="hidden" id="ownerId" value="${advertisement?.ownerId}"/>
 
                 </div>
 
