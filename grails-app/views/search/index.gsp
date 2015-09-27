@@ -33,8 +33,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="pull-left" for="endtDate">End Date</label>
-                    <input type="date" class="form-control" id="endtDate" name="endtDate" placeholder="End Date">
+                    <label class="pull-left" for="endDate">End Date</label>
+                    <input type="date" class="form-control" id="endDate" name="endDate" placeholder="End Date">
                 </div>
 
 
@@ -62,7 +62,7 @@
 
 
 
-<asset:javascript src="searchLocation.js"/>
+<asset:javascript src="searchLocation.js"   />
 <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete"
         async defer></script>
 </body>

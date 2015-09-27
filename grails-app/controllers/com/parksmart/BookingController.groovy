@@ -13,6 +13,8 @@ class BookingController extends RestfulController {
     static responseFormats = ['html', 'json', 'xml']
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    def advertisementService
+
     BookingController() {
         super(Booking)
     }
@@ -44,6 +46,7 @@ class BookingController extends RestfulController {
         }
 
         bookingInstance.save flush:true
+        advertisementService.deleteAvailability(bookingInstance)
 
         request.withFormat {
             form multipartForm {
@@ -71,6 +74,7 @@ class BookingController extends RestfulController {
         }
 
         bookingInstance.save flush:true
+
 
         request.withFormat {
             form multipartForm {

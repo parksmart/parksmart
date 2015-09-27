@@ -130,8 +130,8 @@ grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.parksmart.
 grails.plugin.springsecurity.authority.className = 'com.parksmart.Role'
 grails.plugin.springsecurity.logout.postOnly = false
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-    '/advertisements': ['permitAll'],
-
+    '/advertisements':  ['permitAll'],
+    '/console/**':      ['permitAll'],
 
 	'/':                ['permitAll'],
     '/api/v1.0/**':     ['permitAll'],
