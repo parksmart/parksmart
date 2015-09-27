@@ -45,6 +45,7 @@ class TestUtil {
             advertisement.ownerId = getRandom(userIdList)
             advertisement.startTime = "08:00"
             advertisement.endTime = "18:00"
+            advertisement.daysAvailable = DayType.values() - [DayType.Saturday, DayType.Sunday]
             save(advertisement)
         }
         assert Advertisement.count() == ads.size()

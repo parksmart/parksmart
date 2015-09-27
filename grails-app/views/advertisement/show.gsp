@@ -50,10 +50,10 @@
 
             <dl >
                 <dt>Days</dt>
-                <dd>${advertisementInstance.daysAvailable*.toString().join(',')}</dd>
+                <dd>${advertisementInstance?.daysAvailable*.toString()?.join(',')}</dd>
             </dl>
 
-            <a href="#" class="btn btn-default btn-lg">Book now</a>
+            <a href="${g.createLink(controller: 'booking', action: 'create', params: [advertisementId : advertisementInstance?.id])}" class="btn btn-default btn-lg">Book now</a>
 
         </div>
         <div class="col-sm-6">

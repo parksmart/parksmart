@@ -26,6 +26,7 @@ class BookingController extends RestfulController {
         respond bookingInstance
     }
 
+    @Secured('IS_AUTHENTICATED_FULLY')
     def create() {
         respond new Booking(params)
     }
