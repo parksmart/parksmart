@@ -93,7 +93,7 @@
 
         <div class="form-group">
             <div class="col-sm-6 text-center">
-                <button type="submit" class="btn btn-default"> ${advertisementInstance?.id ? 'Update my advertisement' : 'post my advertisement'} </button>
+                <button type="submit" class="btn btn-default"> ${advertisementInstance?.id ? 'Update my advertisement' : 'Post my advertisement'} </button>
             </div>
         </div>
     </g:form>
