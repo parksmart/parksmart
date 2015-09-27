@@ -25,17 +25,17 @@ class TestUtil {
         List userIdList = User.list()*.id
 
         List ads = [
-                [name: 'Spacious parking with a cycle near CyberCity, Gurgaon', address: 'Belverede Apartments-2, Sector 24, Gurgaon, Haryana, India', numberOfCycles: 1, numberOfParkingSlots: 0, pricePerParkingSlot: 0, pricePerCycle: 10, location: [28.4910442, 77.0901351]],
-                [name: 'Spacious parking with a cycle in Gurgaon', address: 'House No 25, Belverede Apartments-2, Sector 24, Gurgaon, Haryana, India', numberOfCycles: 0, numberOfParkingSlots: 1, pricePerParkingSlot: 40, pricePerCycle: 0, location: [28.4910443, 77.0901350]],
+                [name: 'Spacious parking with a cycle near CyberCity, Gurgaon', address: 'Belverede Apartments-2, Sector 24, Gurgaon, Haryana, India', numberOfCycles: 1, numberOfParkingSlots: 0, pricePerParkingSlot: 50, pricePerCycle: 10, location: [28.4910442, 77.0901351]],
+                [name: 'Spacious parking with a cycle in Gurgaon', address: 'House No 25, Belverede Apartments-2, Sector 24, Gurgaon, Haryana, India', numberOfCycles: 0, numberOfParkingSlots: 1, pricePerParkingSlot: 40, pricePerCycle: 10, location: [28.4910443, 77.0901350]],
                 [name: 'A cool parking with a cycle', address: 'House No 240, Belverede Apartments-2, Sector 24, Gurgaon, Haryana, India', numberOfCycles: 1, numberOfParkingSlots: 1, pricePerParkingSlot: 40, pricePerCycle: 30, location: [28.4910444, 77.0901350]],
                 [name: 'Parking with a cycle', address: 'Belverede Apartments-2, Sector 24, Gurgaon, Haryana, India', numberOfCycles: 1, numberOfParkingSlots: 1, pricePerParkingSlot: 40, pricePerCycle: 30, location: [28.4910445, 77.0901351]],
                 [name: 'A cool parking with a cycle', address: 'Belverede Apartments-2, Sector 24, Gurgaon, Haryana, India', numberOfCycles: 1, numberOfParkingSlots: 0, pricePerParkingSlot: 0, pricePerCycle: 20, location: [28.4910442, 77.0901351]],
                 [name: 'Spacious parking with a cycle near CyberCity, Gurgaon', address: 'Corporate Apartments Gurgaon, Mushedpur, DLF Phase 2, Gurgaon, Haryana, India', numberOfCycles: 1, numberOfParkingSlots: 1, pricePerParkingSlot: 40, pricePerCycle: 30, location: [28.488467, 77.08386599999994]],
                 [name: 'Parking with a cycle', address: 'Corporate Apartments Gurgaon, Mushedpur, DLF Phase 2, Gurgaon, Haryana, India', numberOfCycles: 1, numberOfParkingSlots: 1, pricePerParkingSlot: 40, pricePerCycle: 30, location: [28.488467, 77.08386599999994]],
-                [name: 'A cool parking with a cycle', address: 'Corporate Apartments Gurgaon, Mushedpur, DLF Phase 2, Gurgaon, Haryana, India', numberOfCycles: 0, numberOfParkingSlots: 1, pricePerParkingSlot: 50, pricePerCycle: 0, location: [28.488467, 77.08386599999994]],
+                [name: 'A cool parking with a cycle', address: 'Corporate Apartments Gurgaon, Mushedpur, DLF Phase 2, Gurgaon, Haryana, India', numberOfCycles: 0, numberOfParkingSlots: 1, pricePerParkingSlot: 50, pricePerCycle: 40, location: [28.488467, 77.08386599999994]],
                 [name: 'A cool parking with a cycle at awesome location', address: 'Corporate Apartments Gurgaon, Mushedpur, DLF Phase 2, Gurgaon, Haryana, India', numberOfCycles: 1, numberOfParkingSlots: 1, pricePerParkingSlot: 40, pricePerCycle: 30, location: [28.488467, 77.08386599999994]],
-                [name: 'Beat the traffic - parking + cycle near CyberCity', address: 'Corporate Apartments Gurgaon, Mushedpur, DLF Phase 2, Gurgaon, Haryana, India', numberOfCycles: 1, numberOfParkingSlots: 0, pricePerParkingSlot: 0, pricePerCycle: 15, location: [28.488467, 77.08386599999994]],
-                [name: 'Beat the traffic - parking in DLF Phase 2', address: 'Corporate Apartments Gurgaon, Mushedpur, DLF Phase 2, Gurgaon, Haryana, India', numberOfCycles: 0, numberOfParkingSlots: 1, pricePerParkingSlot: 40, pricePerCycle: 0, location: [28.488467, 77.08386599999994]],
+                [name: 'Beat the traffic - parking + cycle near CyberCity', address: 'Corporate Apartments Gurgaon, Mushedpur, DLF Phase 2, Gurgaon, Haryana, India', numberOfCycles: 1, numberOfParkingSlots: 0, pricePerParkingSlot: 100, pricePerCycle: 150, location: [28.488467, 77.08386599999994]],
+                [name: 'Beat the traffic - parking in DLF Phase 2', address: 'Corporate Apartments Gurgaon, Mushedpur, DLF Phase 2, Gurgaon, Haryana, India', numberOfCycles: 0, numberOfParkingSlots: 1, pricePerParkingSlot: 40, pricePerCycle: 10, location: [28.488467, 77.08386599999994]],
                 [name: 'Easy Parking in Sector 24 Gurgaon', address:'Room#34, Lagoon Apartments, Ambience Island, DLF Phase 3, Sector 24, Gurgaon, Haryana 122002, India', numberOfCycles: 0,numberOfParkingSlots: 1, pricePerParkingSlot: 45, pricePerCycle: 25, location: [28.50417,77.09673]],
                 [name: 'Spacious parking available in DLF Phase 3', address: 'Room#102, V12/2, Lower Ground Floor, DLF City, Phase III, Gurgaon, Haryana 122002, India', numberOfCycles: 0,numberOfParkingSlots: 1, pricePerParkingSlot: 45, pricePerCycle: 25, location: [28.492908,77.107436]],
                 [name: 'Secure parking and a cycle at DLF Oakwood Estate', address: 'DLF Oakwood Estate, Akashneem Marg, Sector 25,Gurgaon, Haryana 122002,India', numberOfCycles: 1,numberOfParkingSlots: 1, pricePerParkingSlot: 45, pricePerCycle: 25, location: [28.4843538,77.0882538]],
@@ -69,8 +69,8 @@ class TestUtil {
                     startDate: new Date() + 5,
                     endDate: new Date() + 10,
                     amount: 100,
-                    isParking: advertisement.id % 3 ? false : true,
-                    isCycle: advertisement.id % 4 ? false : true
+                    isParking: advertisement.id % 2 ? false : true,
+                    isCycle: true
             )
             save(booking)
         }
