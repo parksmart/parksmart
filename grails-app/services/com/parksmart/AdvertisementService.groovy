@@ -27,6 +27,10 @@ class AdvertisementService {
         }
     }
 
+    void deleteAvailabilities(Advertisement advertisement) {
+        Availability.findAllByAdvertisementId(advertisement?.id)*.delete()
+    }
+
     void deleteAvailability(Booking booking) {
         List types = []
         if (booking?.isCycle) {
