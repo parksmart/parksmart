@@ -11,7 +11,7 @@
 
 <div class="container">
 
-    <h2>Booking Details for booking id: ${bookingInstance?.bookingId}</h2>
+    <h2>Details for Booking id: ${bookingInstance?.bookingId}</h2>
 
     <div class="row">
 
