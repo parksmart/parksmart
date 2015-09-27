@@ -1,4 +1,5 @@
 import com.parksmart.Advertisement
+import com.parksmart.Booking
 import com.parksmart.Role
 import com.parksmart.TestUtil
 import com.parksmart.User
@@ -30,6 +31,9 @@ class BootStrap {
         TestUtil.createBookings()
         Advertisement.list()?.each {
             advertisementService.createAvailabilities(it)
+        }
+        Booking.list()?.each {Booking booking ->
+            advertisementService.deleteAvailability(booking)
         }
     }
 

@@ -30,12 +30,14 @@
                     <g:if test="${advertisement?.numberOfCycles}">
                         <ps:fieldValue fieldName="Cycle Rent/Day" value="${advertisement?.pricePerCycle}"/>
                     </g:if>
+                    <input type="hidden" id="username" value="${advertisement?.owner?.name}"/>
+                    <input type="hidden" id="advertisementId" value="${advertisement?.id}"/>
 
                 </div>
             </div>
             <g:if test="${!ifViewerIsOwner}">
                 <div class="panel-footer text-right" style="padding-top: 0px; padding-bottom: 0px;">
-                    <a class="btn btn-sm btn-default" href="#"> Book Now </a>
+                    <a class="btn btn-sm btn-default" href="${createLink(controller: 'booking', action: 'create', params: [advertisementId : advertisement?.id])}"> Book Now </a>
                 </div>
             </g:if>
         </div>

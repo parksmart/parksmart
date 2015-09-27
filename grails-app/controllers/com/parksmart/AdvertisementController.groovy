@@ -101,7 +101,9 @@ class AdvertisementController extends RestfulController {
             return
         }
 
-        advertisementInstance.delete flush: true
+        advertisementInstance.isDeleted = true
+        advertisementInstance.save flush: true
+        advertisementService.deleteAvailabilities(advertisementInstance)
 
         request.withFormat {
             form multipartForm {
