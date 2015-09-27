@@ -55,16 +55,13 @@
                 <!-- ================ -->
                 <div class="main col-md-8 col-md-offset-2">
 
-                    <!-- logo -->
-                    <div class="logo">
-                        <a href="index.html">
-                            <asset:image src="theme/images/logo_red.png" id="logo" alt=""/>
-                        </a>
+                    <div style="display: inline-flex;cursor: pointer;padding-left:300px" onclick="gotoUrl('${createLink(controller: 'public', action: 'home')}');" >
+                        <h2>Park</h2><h2 style="color: red;font-weight: bold;">Smart</h2>
                     </div>
 
                     <!-- name-and-slogan -->
                     <div class="site-slogan">
-                        Clean &amp; Powerful Bootstrap Theme
+                    Be smart because it matters..
                     </div>
 <g:layoutBody/>
 

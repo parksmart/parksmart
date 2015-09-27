@@ -9,7 +9,8 @@
 <div data-effect-delay="300" data-animation-effect="fadeInDownSmall"
      class="object-non-visible animated object-visible fadeInDownSmall">
     <div class="form-block center-block">
-        <h2 class="title">Login</h2>
+        <h2 class="title">Login
+        </h2>
         <hr>
         <g:if test='${flash.message}'>
             <div class='login_message'>${flash.message}</div>
@@ -40,15 +41,7 @@
                         </label>
                     </div>
                     <button class="btn btn-group btn-default btn-sm" type="submit">Log In</button>
-                    <ul>
-                        <li><a href="#">Forgot your password?</a></li>
-                    </ul>
-                    <span class="text-center text-muted">Login with</span>
-                    <ul class="social-links colored circle clearfix">
-                        <li class="facebook"><a href="http://www.facebook.com" target="_blank"><i
-                                class="fa fa-facebook"></i></a></li>
-                    </ul>
-                </div>
+                </di v>
             </div>
         </form>
     </div>
