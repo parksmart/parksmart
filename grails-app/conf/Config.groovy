@@ -94,6 +94,9 @@ environments {
         sms.overrideSender = '+17248795211'
         twilio.skipAuthenticationForInboundSMS = true
     }
+    qa{
+        grails.assets.minifyJs = false
+    }
     production {
         grails.logging.jul.usebridge = false
         // TODO: grails.serverURL = "http://www.changeme.com"
