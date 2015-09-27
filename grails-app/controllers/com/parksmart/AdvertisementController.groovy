@@ -1,9 +1,6 @@
 package com.parksmart
 
-import grails.mongodb.geo.Distance
-import grails.mongodb.geo.Metric
 import grails.mongodb.geo.Point
-import grails.mongodb.geo.Sphere
 import grails.plugin.springsecurity.annotation.Secured
 import grails.rest.RestfulController
 import grails.transaction.Transactional
@@ -14,7 +11,6 @@ import static org.springframework.http.HttpStatus.*
 @Transactional(readOnly = true)
 class AdvertisementController extends RestfulController {
 
-    def springSecurityService
     def advertisementService
 
     static responseFormats = ['html', 'json', 'xml']
@@ -39,15 +35,14 @@ class AdvertisementController extends RestfulController {
         respond advertisementInstance
     }
 
+    @Secured('IS_AUTHENTICATED_FULLY')
     def create() {
-        User user = springSecurityService.currentUser as User
-        Advertisement advertisementInstance = Advertisement.findByOwner(user) ?: new Advertisement()
+        Advertisement advertisementInstance = new Advertisement()
         respond advertisementInstance
     }
 
     @Transactional
     def save(Advertisement advertisementInstance) {
-        println params
         if (advertisementInstance == null) {
             notFound()
             return
@@ -64,8 +59,8 @@ class AdvertisementController extends RestfulController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'advertisement.label', default: 'Advertisement'), advertisementInstance.id])
-                respond advertisementInstance, view: 'create'
+                flash.message = message(code: 'advertisement.posted')
+                respond advertisementInstance, view: 'show'
             }
             '*' { respond advertisementInstance, [status: CREATED] }
         }
