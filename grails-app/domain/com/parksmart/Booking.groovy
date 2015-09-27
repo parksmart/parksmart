@@ -9,6 +9,8 @@ class Booking {
     Long ownerId
     Long customerId
     Date dateCreated
+    String address
+    List<Double> location
     @BindingFormat("yyyy-MM-dd")
     Date startDate
     @BindingFormat("yyyy-MM-dd")

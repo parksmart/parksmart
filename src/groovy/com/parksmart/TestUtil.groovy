@@ -70,7 +70,9 @@ class TestUtil {
                     endDate: new Date() + 10,
                     amount: 100,
                     isParking: advertisement.id % 2 ? false : true,
-                    isCycle: true
+                    isCycle: true,
+                    address: advertisement.address,
+                    location: advertisement.location
             )
             save(booking)
         }
