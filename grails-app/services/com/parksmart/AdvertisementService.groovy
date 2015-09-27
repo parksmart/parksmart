@@ -30,12 +30,18 @@ class AdvertisementService {
     List<AdvertisementResult> findAllAdvertisements(AdvertisementSearchCO advertisementSearchCO) {
         AggregationOutput aggregationOutput = aggregateAndFindAvailability(advertisementSearchCO)
         List<AdvertisementResult> advertisementResultsList = aggregationOutput?.results()?.inject([]) { List<AdvertisementResult> advertisementResults, aggregationResult->
-            AdvertisementResult advertisementResult = (AdvertisementResult) Advertisement.get(aggregationResult?.advertisementId)
-            if(advertisementResult?.availabilityRange?.type == AvailabilityType.PARKING) {
-                advertisementResult.parkingAvailabilityRange = convertSequenceOfNumToArrayOfRange(advertisementResult?.availabilityRange?.value)
+            AdvertisementResult advertisementResult = new AdvertisementResult(Advertisement.get(aggregationResult?.advertisementId))
+            if(aggregationResult?.availabilityRange?.size()>0 && aggregationResult?.availabilityRange[0]?.type == AvailabilityType.PARKING.toString()) {
+                advertisementResult.parkingAvailabilityRange = convertSequenceOfNumToArrayOfRange(aggregationResult?.availabilityRange[0]?.value)
             }
-            if(advertisementResult?.availabilityRange?.type == AvailabilityType.CYCLE) {
-                advertisementResult.cycleAvailabilityRange = convertSequenceOfNumToArrayOfRange(advertisementResult?.availabilityRange?.value)
+            if(aggregationResult?.availabilityRange?.size()>1 && aggregationResult?.availabilityRange[1]?.type == AvailabilityType.PARKING.toString()) {
+                advertisementResult.parkingAvailabilityRange = convertSequenceOfNumToArrayOfRange(aggregationResult?.availabilityRange[1]?.value)
+            }
+            if(aggregationResult?.availabilityRange?.size()>0 && aggregationResult?.availabilityRange[0]?.type == AvailabilityType.CYCLE.toString()) {
+                advertisementResult.cycleAvailabilityRange = convertSequenceOfNumToArrayOfRange(aggregationResult?.availabilityRange[0]?.value)
+            }
+            if(aggregationResult?.availabilityRange?.size()>1 && aggregationResult?.availabilityRange[1]?.type == AvailabilityType.CYCLE.toString()) {
+                advertisementResult.cycleAvailabilityRange = convertSequenceOfNumToArrayOfRange(aggregationResult?.availabilityRange[1]?.value)
             }
             advertisementResults << advertisementResult
             advertisementResults
@@ -50,8 +56,9 @@ class AdvertisementService {
                 ['$match': ['date': ['$gt': advertisementSearchCO?.startDate, '$lt': advertisementSearchCO?.endDate],
                             'geoLocation': ['$geoWithin': ['$centerSphere': [advertisementSearchCO?.center,new Distance(advertisementSearchCO?.radiusInKm, Metric.KILOMETERS).inRadians()]]]]
                 ],
+                ['$sort': ['date': 1]],
                 ['$group': ['_id': ['advertisementId': '$advertisementId', 'type': '$type'],
-                        'advertisementId': [ '$first': '$advertisementId'] ,'type': ['$first': '$type'] ,'availabilityRange': ['$addToSet': ['$dayOfMonth': '$date']]
+                        'advertisementId': [ '$first': '$advertisementId'] ,'type': ['$first': '$type'] ,'availabilityRange': ['$push': ['$dayOfMonth': '$date']]
                 ]],
                 ['$group': ['_id': ['advertisementId': '$advertisementId'],
                         'advertisementId': ['$first': '$advertisementId'], 'availabilityRange': ['$push': ['type': '$type', 'value':'$availabilityRange']]
@@ -63,17 +70,18 @@ class AdvertisementService {
     }
 
     List convertSequenceOfNumToArrayOfRange(List<Integer> availabilities) {
-        List ranges
-        int rstart,rend
-        for (int i = 0; i < availabilities.length; i++) {
-            rstart = availabilities[i];
-            rend = rstart;
-            while (availabilities[i + 1] - availabilities[i] == 1) {
-                rend = availabilities[i + 1]; // increment the index if the numbers sequential
-                i++;
+        def hold
+                List str = []
+
+        availabilities?.eachWithIndex {Integer it,i->
+            if( (it)+1 == (availabilities[i+1] as Integer) ){
+                if( !hold ) hold = it
+            } else {
+                str += hold ? "$hold-${it}" : "${it}"
+                hold = null
             }
-            ranges.push(rstart == rend ? rstart+'' : rstart + '-' + rend);
         }
-        return ranges
+
+        str[ 0..(str.size()-3) ]
     }
 }
