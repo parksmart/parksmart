@@ -17,7 +17,8 @@ class UserController {
         List<Advertisement> myAdvertisementList = Advertisement.findAllByOwnerId(currentUserId)
         List<Booking> myRentOutBookings = Booking.findAllByOwnerId(currentUserId)
 
-        int myBookingDaysCount = myBookingList.sum {Booking booking-> booking.daysCount}
+
+        int myBookingDaysCount = myBookingList?.sum {Booking booking-> booking?.daysCount}?:0
 
         [currentUser:currentUser,
                 myBookingList:myBookingList,

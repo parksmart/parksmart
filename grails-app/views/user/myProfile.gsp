@@ -38,12 +38,10 @@
             </a>
         </li>
 
-
     </ul>
     <!-- Tab panes -->
     <div class="tab-content">
         <div id="ads" class="tab-pane fade active in">
-
 
             <g:if test="${!myAdvertisementList}">
                 <div class="h3">
@@ -54,18 +52,19 @@
                 <h3>
                     Showing the advertisements posted by you
                 </h3>
-                <g:render template="/search/renderCards" model="[advertisements : myAdvertisementList , ifViewerIsOwner:true]"/>
+                <g:render template="/search/renderCards"
+                          model="[advertisements: myAdvertisementList, ifViewerIsOwner: true]"/>
             </g:else>
         </div>
 
         <div id="rentOutAds" class="tab-pane fade">
             <g:if test="${!myRentOutBookings}">
                 <h3>
-                        You have not recieved any bookings against your advertisements.
+                    You have not recieved any bookings against your advertisements.
                 </h3>
             </g:if>
             <g:else>
-                <g:render template="/booking/bookingCard" model="[bookings : myRentOutBookings]"/>
+                <g:render template="/booking/bookingCard" model="[bookings: myRentOutBookings]"/>
             </g:else>
         </div>
 
@@ -77,11 +76,12 @@
             </g:if>
             <g:else>
 
-                <g:render template="/booking/bookingCard" model="[bookings : myBookingList]"/>
+                <g:render template="/booking/bookingCard" model="[bookings: myBookingList]"/>
 
             </g:else>
 
         </div>
+
         <div id="profile" class="tab-pane fade">
             <dl class="dl-horizontal">
                 <dt>Name</dt>
@@ -94,21 +94,41 @@
             <hr>
 
         </div>
+
         <div id="stats" class="tab-pane fade">
 
             <div class="col-sm-12">
+
+                <h4>You are yet to start availing the great benefits of being a Smart Parker.  Had you availed
+                Smart Parking, you could have had following weekly savings/benefits</h4>
+
+
                 <div class="panel panel-default">
                     <div class="panel-heading text-center" style="padding: 15px;">
                         <b>Health Benefits</b>
                     </div>
+
                     <div class="panel-body">
                         <div class="col-sm-2">
                             <i class="fa fa-globe fa-3x"></i>
                         </div>
+
                         <div class="col-sm-8">
-                            <ps:fieldValue fieldName="You cycled" value="${myBookingDaysCount*15} mins"/>
-                            <ps:fieldValue fieldName="You burned" value="${myBookingDaysCount*15 * 10} Calories"/>
-                            <ps:fieldValue fieldName="You reduced carbon emission by" value="${myBookingDaysCount*15 *(30*5/120)} gms"/>
+                            <g:if test="${myBookingDaysCount}">
+                                <ps:fieldValue fieldName="You cycled" value="${myBookingDaysCount * 15} mins"/>
+                                <ps:fieldValue fieldName="You burned" value="${myBookingDaysCount * 15 * 10} Calories"/>
+                                <ps:fieldValue fieldName="You reduced carbon emission by"
+                                               value="${myBookingDaysCount * 15 * (30 * 5 / 120)} gms"/>
+                            </g:if>
+                            <g:else>
+
+
+                                <ps:fieldValue fieldName="You could have cycled" value="${5 * 15} mins"/>
+                                <ps:fieldValue fieldName="You could have burned" value="${5 * 15 * 10} Calories"/>
+                                <ps:fieldValue fieldName="You could have reduced carbon emission by"
+                                               value="${5 * 15 * (30 * 5 / 120)} gms"/>
+
+                            </g:else>
                         </div>
                     </div>
                 </div>
@@ -119,16 +139,34 @@
                     <div class="panel-heading text-center" style="padding: 15px;">
                         <b>Financial Benefits</b>
                     </div>
+
                     <div class="panel-body">
                         <div class="col-sm-2">
                             <i class="fa fa-rupee fa-3x"></i>
                         </div>
-                        <div class="col-sm-8">
-                            <ps:fieldValue fieldName="You saved" value="${((myBookingDaysCount*15 * (1/60)) * 100).toInteger().toBigDecimal() / 100    } litre of fuel"/>
 
-                            <ps:fieldValue fieldName="You saved " value="Rs ${myBookingDaysCount*15} on your gym subscription"/>
-                            <ps:fieldValue fieldName="You saved " value="1 hr from Gym by cycling to work"/>
-                            <ps:fieldValue fieldName="You saved " value="1 hr from commute time"/>
+                        <div class="col-sm-8">
+                            <g:if test="${myBookingDaysCount}">
+                                <ps:fieldValue fieldName="You saved"
+                                               value="${((myBookingDaysCount * 15 * (1 / 60)) * 100).toInteger().toBigDecimal() / 100} litre of fuel"/>
+                                <ps:fieldValue fieldName="You saved "
+                                               value="Rs ${myBookingDaysCount * 60} on your gym subscription"/>
+                                <ps:fieldValue fieldName="You saved "
+                                               value="${myBookingDaysCount * 15 / 60} hr from Gym by cycling to work"/>
+                                <ps:fieldValue fieldName="You saved "
+                                               value="${myBookingDaysCount}hr from commute time"/>
+                            </g:if>
+                            <g:else>
+                                <ps:fieldValue fieldName="You could have saved"
+                                               value="${((5 * 15 * (1 / 60)) * 100).toInteger().toBigDecimal() / 100} litre of fuel"/>
+                                <ps:fieldValue fieldName="You could have saved "
+                                               value="Rs ${5* 60} on your gym subscription"/>
+                                <ps:fieldValue fieldName="You could have saved "
+                                               value="${5* 15 / 60} hr from Gym by cycling to work"/>
+                                <ps:fieldValue fieldName="You could have saved "
+                                               value="${5}hr from commute time"/>
+
+                            </g:else>
                         </div>
                     </div>
                 </div>
