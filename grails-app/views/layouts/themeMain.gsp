@@ -284,7 +284,12 @@
                                             </g:if>
 
                                             <sec:ifLoggedIn>
-
+                                                <g:if test="${actionName != 'home' && controllerName != 'public'}">
+                                                    <li><a href="${createLink(controller: 'search', action: 'index')}">Book a parking or bicycle</a>
+                                                    </li>
+                                                    <li><a href="${createLink(controller: 'advertisement', action: 'create')}">Post an advertisement</a>
+                                                    </li>
+                                                </g:if>
 
 
                                                 <li class="dropdown" style="">
@@ -292,8 +297,8 @@
                                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><sec:username/> </a>
                                                     <ul class="dropdown-menu">
                                                         <li><a href="${createLink(controller: 'user', action: 'myProfile')}">My Account</a></li>
-                                                        <li><a href="${createLink(controller: 'search', action: 'index')}">Book a parking or bicycle</a></li>
-                                                        <li><a href="${createLink(controller: 'advertisement', action: 'create')}">Post an advertisement</a></li>
+                                                        %{--<li><a href="${createLink(controller: 'search', action: 'index')}">Book a parking or bicycle</a></li>--}%
+                                                        %{--<li><a href="${createLink(controller: 'advertisement', action: 'create')}">Post an advertisement</a></li>--}%
                                                         <li><a href="${createLink(controller: 'logout', action: 'index')}">Log out</a></li>
                                                     </ul>
                                                 </li>
