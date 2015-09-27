@@ -264,17 +264,34 @@
                                     <div class="collapse navbar-collapse" id="navbar-collapse-1">
                                         <ul class="nav navbar-nav navbar-right">
                                             <g:if test="${actionName=='home' && controllerName=='public'}">
-                                                <li><a href="#benefits" class="btn btn-lg smooth-scroll" data-toggle="dropdown">Why Park Smart</a></li>
-                                                <li><a href="#howitworks" class="btn btn-lg smooth-scroll" data-toggle="dropdown">How it works</a></li>
-                                                <li><a href="#team" class="btn btn-lg smooth-scroll" data-toggle="dropdown">Our Team</a></li>
-                                                <li>
-                                                    <g:link controller="public" action="signUp"
-                                                       class="btn smooth-scroll">
-                                                    Sign Up
-                                                    </g:link>
-                                                </li>
+                                                <li><a href="#benefits" class="smooth-scroll" data-toggle="dropdown">Why Park Smart</a></li>
+                                                <li><a href="#howitworks" class="smooth-scroll" data-toggle="dropdown">How it works</a></li>
+                                                <li><a href="#team" class="smooth-scroll" data-toggle="dropdown">Our Team</a></li>
+
+
+                                                <sec:ifNotLoggedIn>
+                                                    <li><g:link controller="login" action="index"
+                                                                class=" ">
+                                                        Login</g:link>
+                                                    </li>
+
+                                                    <li><g:link controller="public" action="signUp"
+                                                                class=" ">
+                                                        Sign Up</g:link>
+                                                    </li>
+
+
+                                                </sec:ifNotLoggedIn>
                                                 %{--<li><a href="#team" class="btn btn-lg smooth-scroll" data-toggle="dropdown">Log In</a></li>--}%
                                             </g:if>
+
+                                            <sec:ifLoggedIn>
+                                                <g:link controller="logout" action="index"
+                                                        class="btn smooth-scroll">
+                                                     Log out
+                                                </g:link>
+                                            </sec:ifLoggedIn>
+
                                         </ul>
                                     </div>
 
