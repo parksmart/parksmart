@@ -147,7 +147,7 @@
                              data-speed="600"
                              data-start="0"
                              data-end="10000"
-                             data-endspeed="600">Hassle free parking, reserved explicitly for you.
+                             data-endspeed="600">Hassle free parking, reserved exclusively for you.
 
                         </div>
 
