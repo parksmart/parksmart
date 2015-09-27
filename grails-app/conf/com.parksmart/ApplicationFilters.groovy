@@ -9,6 +9,9 @@ class ApplicationFilters {
         all(controller: '*', action: '*'){
             before = {
                 println params
+                if(!params.currentUserId && springSecurityService.isLoggedIn()){
+                    params.currentUserId = springSecurityService.currentUser.id
+                }
             }
         }
 
@@ -26,7 +29,7 @@ class ApplicationFilters {
             }
         }
 
-        booking(controller:'booking', action:'*') {
+        booking(controller:'*', action:'*') {
             before = {
                 if(!params.customerId){
                     User user = springSecurityService.currentUser as User
