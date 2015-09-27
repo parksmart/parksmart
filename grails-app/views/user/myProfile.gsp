@@ -1,4 +1,4 @@
-<%@ page import="com.parksmart.Advertisement" contentType="text/html;charset=UTF-8" %>
+<%@ page import="java.math.MathContext; com.parksmart.Advertisement" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <meta name="layout" content="themeMain"/>
@@ -31,6 +31,14 @@
                 Profile
             </a>
         </li>
+        <li class="">
+            <a data-toggle="tab" role="tab" href="#stats" aria-expanded="false">
+                <i class="fa fa-bar-chart pr-5"></i>
+                Stats
+            </a>
+        </li>
+
+
     </ul>
     <!-- Tab panes -->
     <div class="tab-content">
@@ -85,6 +93,46 @@
             </dl>
             <hr>
 
+        </div>
+        <div id="stats" class="tab-pane fade">
+
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center" style="padding: 15px;">
+                        <b>Health Benefits</b>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-sm-2">
+                            <i class="fa fa-globe fa-3x"></i>
+                        </div>
+                        <div class="col-sm-8">
+                            <ps:fieldValue fieldName="You cycled" value="${myBookingDaysCount*15} mins"/>
+                            <ps:fieldValue fieldName="You burned" value="${myBookingDaysCount*15 * 10} Calories"/>
+                            <ps:fieldValue fieldName="You reduced carbon emission by" value="${myBookingDaysCount*15 *(30*5/120)} gms"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center" style="padding: 15px;">
+                        <b>Financial Benefits</b>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-sm-2">
+                            <i class="fa fa-rupee fa-3x"></i>
+                        </div>
+                        <div class="col-sm-8">
+                            <ps:fieldValue fieldName="You saved" value="${((myBookingDaysCount*15 * (1/60)) * 100).toInteger().toBigDecimal() / 100    } litre of fuel"/>
+
+                            <ps:fieldValue fieldName="You saved " value="Rs ${myBookingDaysCount*15} on your gym subscription"/>
+                            <ps:fieldValue fieldName="You saved " value="1 hr from Gym by cycling to work"/>
+                            <ps:fieldValue fieldName="You saved " value="1 hr from commute time"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

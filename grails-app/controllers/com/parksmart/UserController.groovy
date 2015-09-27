@@ -16,10 +16,14 @@ class UserController {
         List<Booking> myBookingList = Booking.findAllByCustomerId(currentUserId)
         List<Advertisement> myAdvertisementList = Advertisement.findAllByOwnerId(currentUserId)
         List<Booking> myRentOutBookings = Booking.findAllByOwnerId(currentUserId)
+
+        int myBookingDaysCount = myBookingList.sum {Booking booking-> booking.daysCount}
+
         [currentUser:currentUser,
                 myBookingList:myBookingList,
                 myAdvertisementList :myAdvertisementList ,
-                myRentOutBookings: myRentOutBookings
+                myRentOutBookings: myRentOutBookings,
+                myBookingDaysCount: myBookingDaysCount
         ]
     }
 

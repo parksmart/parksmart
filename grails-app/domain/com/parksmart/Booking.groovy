@@ -34,7 +34,7 @@ class Booking {
         location()
     }
 
-    static transients = ['advertisement', 'owner', 'customer', 'bookingId']
+    static transients = ['advertisement', 'owner', 'customer', 'bookingId', 'daysCount']
 
     static mapWith = "mongo"
 
@@ -73,5 +73,9 @@ class Booking {
 
     String getBookingId() {
         "PS${id.toString().padLeft(5, '0')}"
+    }
+
+    int getDaysCount(){
+        endDate - startDate
     }
 }
