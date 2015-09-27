@@ -3,7 +3,6 @@
 //= require theme/plugins/modernizr.js
 //= require theme/plugins/rs-plugin/js/jquery.themepunch.tools.min.js
 //= require theme/plugins/rs-plugin/js/jquery.themepunch.revolution.min.js
-//= require theme/plugins/isotope/isotope.pkgd.min.js
 //= require theme/plugins/owl-carousel/owl.carousel.js
 //= require theme/plugins/magnific-popup/jquery.magnific-popup.min.js
 //= require theme/plugins/jquery.appear.js
