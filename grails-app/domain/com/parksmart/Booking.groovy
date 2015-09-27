@@ -16,6 +16,9 @@ class Booking {
     Boolean isParking
     Boolean isCycle
 
+    Date dateCreated
+    Date lastUpdated
+
     static constraints = {
         advertisementId()
         isParking(nullable: true)

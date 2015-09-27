@@ -14,11 +14,7 @@ class UserController {
         User currentUser = User.get(currentUserId)
 
         List<Booking> myBookingList = Booking.findAllByCustomerId(currentUserId)
-//        List<Advertisement> advertisementList = Advertisement.list()
         List<Advertisement> myAdvertisementList = Advertisement.findAllByOwnerId(currentUserId)
-
-//        List<Advertisement> rentOutAdvertisementList = Advertisement.list()
-        List<Advertisement> rentOutAdvertisementList = Advertisement.findAllByOwnerId(currentUserId)
         List<Booking> myRentOutBookings = Booking.findAllByOwnerId(currentUserId)
         [currentUser:currentUser,
                 myBookingList:myBookingList,
