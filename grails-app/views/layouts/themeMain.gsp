@@ -392,7 +392,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <p>Copyright © 2015 GoofFellas. All Rights Reserved</p>
+                        <p>Copyright © 2015 GoodFellas. All Rights Reserved</p>
                     </div>
                     <div class="col-md-6">
                         <nav class="navbar navbar-default" role="navigation">
