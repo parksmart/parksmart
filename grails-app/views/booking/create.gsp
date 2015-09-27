@@ -62,18 +62,34 @@
                 <dd>${Advertisement.get(params.advertisementId)?.owner?.name}</dd>
             </dl>
 
-            <dl class="dl-horizontal">
-                <dt>Parking</dt>
-                <dd>$Available for {advertisementResult?.parkingAvailabilityRange} at Rs 30/- per day.</dd>
-                %{--<dd>Available for Sep15-Sep20, Sep22-Sep28 and Sep30 at Rs 30/- per day.</dd>--}%
-            </dl>
-
+            <g:if test="${advertisementResult.pricePerParkingSlot}">
+                <dl class="dl-horizontal">
+                    <dt>Parking</dt>
+                    <g:if test="${advertisementResult?.parkingAvailabilityRange}">
+                        <dd>  Available from ${advertisementResult?.getPrettyParkingAvailability()} at Rs ${advertisementResult.pricePerParkingSlot}/- per day.</dd>
+                    </g:if>
+                    <g:else>
+                        Not available
+                    </g:else>
+                    %{--<dd>Available for Sep15-Sep20, Sep22-Sep28 and Sep30 at Rs 30/- per day.</dd>--}%
+                </dl>
+            </g:if>
+            <g:if test="${advertisementResult.pricePerCycle}">
             <dl class="dl-horizontal">
                 <dt>Cycle</dt>
-                <dd>Available for ${advertisementResult?.cycleAvailabilityRange} at Rs 30/- per day.</dd>
+
+
+
+                <g:if test="${advertisementResult?.cycleAvailabilityRange}">
+                    <dd>Available for ${advertisementResult?.getPrettyCycleAvailability()} at Rs ${advertisementResult.pricePerCycle}/- per day.</dd>
+                </g:if>
+                <g:else>
+                    Not available
+                </g:else>
+
                 %{--<dd>Available for Sep15-Sep20, Sep22-Sep28 and Sep30 at Rs 30/- per day.</dd>--}%
             </dl>
-
+    </g:if>
             <a href="page-services.html" class="">View more Details</a>
         </div>
 
