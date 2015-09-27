@@ -8,6 +8,7 @@ class Booking {
     Long advertisementId
     Long ownerId
     Long customerId
+    Date dateCreated
     @BindingFormat("yyyy-MM-dd")
     Date startDate
     @BindingFormat("yyyy-MM-dd")
@@ -49,7 +50,7 @@ class Booking {
 
 
 
-    static transients = ['advertisement', 'owner', 'customer']
+    static transients = ['advertisement', 'owner', 'customer', 'bookingId']
 
     Advertisement getAdvertisement(){
         Advertisement.get(advertisementId)
@@ -63,4 +64,7 @@ class Booking {
         User.get(customerId)
     }
 
+    String getBookingId(){
+            "PS${id.toString().padLeft(5, '0')}"
+    }
 }
