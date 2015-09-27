@@ -12,7 +12,11 @@ class ApplicationFilters {
                     params.ownerId = user?.id
                 }
                 println params
-                return
+
+
+                if(!params.currentUserId && springSecurityService.isLoggedIn()){
+                    params.currentUserId = springSecurityService.currentUser.id
+                }
             }
         }
     }

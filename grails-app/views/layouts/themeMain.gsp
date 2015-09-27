@@ -279,17 +279,20 @@
                                                                 class=" ">
                                                         Sign Up</g:link>
                                                     </li>
-
-
                                                 </sec:ifNotLoggedIn>
                                                 %{--<li><a href="#team" class="btn btn-lg smooth-scroll" data-toggle="dropdown">Log In</a></li>--}%
                                             </g:if>
 
                                             <sec:ifLoggedIn>
-                                                <g:link controller="logout" action="index"
-                                                        class="btn smooth-scroll">
-                                                     Log out
-                                                </g:link>
+
+                                                <li class="dropdown" style="">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><sec:username/> </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="${createLink(controller: 'user', action: 'myProfile')}">My Account</a></li>
+                                                        <li><a href="${createLink(controller: 'logout', action: 'index')}">Log out</a></li>
+                                                    </ul>
+                                                </li>
+
                                             </sec:ifLoggedIn>
 
                                         </ul>
