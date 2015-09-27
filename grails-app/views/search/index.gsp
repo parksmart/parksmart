@@ -53,7 +53,7 @@
     </div>
 
     <div class="row">
-        <div class="col-sm-10 col-sm-offset-1" id="cards-div">
+        <div class="col-sm-12" id="cards-div">
 
         </div>
     </div>
