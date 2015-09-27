@@ -285,7 +285,6 @@
 
                                             <sec:ifLoggedIn>
 
-                                                <li><a href="${createLink(controller: 'public', action: 'home')}" class="smooth-scroll" data-toggle="dropdown">How it works</a></li>
 
 
                                                 <li class="dropdown" style="">
