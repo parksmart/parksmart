@@ -27,6 +27,22 @@ class AdvertisementService {
         }
     }
 
+    void deleteAvailability(Booking booking) {
+        List types = []
+        if (booking?.isCycle) {
+            types << AvailabilityType.CYCLE
+        }
+        if (booking?.isParking) {
+            types << AvailabilityType.PARKING
+        }
+        Date startDate = booking?.startDate
+        Date endDate = booking?.endDate
+        while(startDate <= endDate) {
+            Availability.findByAdvertisementIdAndDateAndTypeInList(booking?.advertisementId, startDate, types)?.delete()
+            startDate = startDate + 1
+        }
+    }
+
     List<AdvertisementResult> findAllAdvertisements(AdvertisementSearchCO advertisementSearchCO) {
         AggregationOutput aggregationOutput = aggregateAndFindAvailability(advertisementSearchCO)
         List<AdvertisementResult> advertisementResultsList = aggregationOutput?.results()?.inject([]) { List<AdvertisementResult> advertisementResults, aggregationResult->
