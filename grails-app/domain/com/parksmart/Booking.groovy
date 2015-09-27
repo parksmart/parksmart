@@ -30,6 +30,15 @@ class Booking {
         startDate()
         endDate()
         amount()
+        location()
+    }
+
+    static transients = ['advertisement', 'owner', 'customer', 'bookingId']
+
+    static mapWith = "mongo"
+
+    static mapping = {
+        location geoIndex: '2d', indexAttributes: [min: -500, max: 500]
     }
 
     Long getOwnerId() {
@@ -40,32 +49,28 @@ class Booking {
         Advertisement advertisement = Advertisement.get(advertisementId)
         Integer numberOfDays = endDate - startDate
         Integer amount = 0;
-        if(isParking){
-            amount+= numberOfDays * advertisement?.pricePerParkingSlot
+        if (isParking) {
+            amount += numberOfDays * advertisement?.pricePerParkingSlot
         }
-        if(isCycle){
-            amount+= numberOfDays * advertisement?.pricePerCycle
+        if (isCycle) {
+            amount += numberOfDays * advertisement?.pricePerCycle
         }
         return amount
     }
 
-
-
-    static transients = ['advertisement', 'owner', 'customer', 'bookingId']
-
-    Advertisement getAdvertisement(){
+    Advertisement getAdvertisement() {
         Advertisement.get(advertisementId)
     }
 
-    User getOwner(){
+    User getOwner() {
         User.get(ownerId)
     }
 
-    User getCustomer(){
+    User getCustomer() {
         User.get(customerId)
     }
 
-    String getBookingId(){
-            "PS${id.toString().padLeft(5, '0')}"
+    String getBookingId() {
+        "PS${id.toString().padLeft(5, '0')}"
     }
 }
