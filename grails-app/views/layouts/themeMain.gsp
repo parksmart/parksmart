@@ -324,7 +324,7 @@
                                 <div class="col-sm-6">
                                     <p>Promoting the car free day in a smarter way. </p>
                                     <ul class="social-links circle">
-                                        <li class="facebook"><a target="_blank" href="http://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
+                                        <li class="facebook"><a target="_blank" href="https://www.facebook.com/parksmartsolutions"><i class="fa fa-facebook"></i></a></li>
                                         <li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
                                         <li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>
                                         <li class="skype"><a target="_blank" href="http://www.skype.com"><i class="fa fa-skype"></i></a></li>
