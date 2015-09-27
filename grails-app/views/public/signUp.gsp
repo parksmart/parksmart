@@ -7,7 +7,8 @@
 <body>
 <div data-effect-delay="300" data-animation-effect="fadeInDownSmall" class="object-non-visible animated object-visible fadeInDownSmall">
     <div class="form-block center-block">
-        <h2 class="title">Sign Up</h2>
+        <h2 class="title">Sign Up
+        </h2>
         <hr>
         <div id="signUpErrorsDiv" role="alert" class="alert alert-danger alert-dismissible fade in"
              style="display: none">
@@ -48,7 +49,7 @@
                 <label class="col-sm-3 control-label" for="mobileNumber">Mobile Number<span class="text-danger small"></span></label>
                 <div class="col-sm-8">
                     <input type="email" placeholder="Mobile Number" id="mobileNumber" name="mobileNumber" class="form-control">
-                    <i class="fa fa-mobile-phone form-control-feedback"></i>
+                    <i class="fa fa-lg fa-mobile-phone form-control-feedback"></i>
                 </div>
             </div>
             <div class="form-group">
@@ -61,13 +62,20 @@
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-sm-offset-3 col-sm-8">
+                <div class="col-sm-offset-3 col-sm-10">
                     <button class="btn btn-default" type="button"
-                            onclick="submitRegistrationForm('signUpForm')">Sign Up</button>
+                            onclick="submitRegistrationForm('signUpForm')">
+                        Sign Up
+                    </button>
                 </div>
             </div>
         </form>
     </div>
+    <p class="text-center space-top">Already have an account?
+        <g:link controller="login" action="auth">
+        Log in
+        </g:link> now.
+    </p>
 </div>
 <asset:javascript src="signUp.js"/>
 </body>
