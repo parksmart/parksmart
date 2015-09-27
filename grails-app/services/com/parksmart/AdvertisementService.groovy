@@ -47,6 +47,25 @@ class AdvertisementService {
         }
     }
 
+    AdvertisementResult createInstanceOfAdvertisementResult(Advertisement advertisement) {
+        AggregationOutput aggregationOutput = aggregateAndFindFreeAdvertisementSlots(advertisement?.id)
+        Map aggregationResult = aggregationOutput?.results()?.getAt(0)
+        AdvertisementResult advertisementResult = new AdvertisementResult(advertisement)
+        if (aggregationResult?.availabilityRange?.size() > 0 && aggregationResult?.availabilityRange[0]?.type == AvailabilityType.PARKING.toString()) {
+            advertisementResult.parkingAvailabilityRange = convertSequenceOfNumToArrayOfRange(aggregationResult?.availabilityRange[0]?.value)
+        }
+        if (aggregationResult?.availabilityRange?.size() > 1 && aggregationResult?.availabilityRange[1]?.type == AvailabilityType.PARKING.toString()) {
+            advertisementResult.parkingAvailabilityRange = convertSequenceOfNumToArrayOfRange(aggregationResult?.availabilityRange[1]?.value)
+        }
+        if (aggregationResult?.availabilityRange?.size() > 0 && aggregationResult?.availabilityRange[0]?.type == AvailabilityType.CYCLE.toString()) {
+            advertisementResult.cycleAvailabilityRange = convertSequenceOfNumToArrayOfRange(aggregationResult?.availabilityRange[0]?.value)
+        }
+        if (aggregationResult?.availabilityRange?.size() > 1 && aggregationResult?.availabilityRange[1]?.type == AvailabilityType.CYCLE.toString()) {
+            advertisementResult.cycleAvailabilityRange = convertSequenceOfNumToArrayOfRange(aggregationResult?.availabilityRange[1]?.value)
+        }
+        advertisementResult
+    }
+
     List<AdvertisementResult> findAllAdvertisements(AdvertisementSearchCO advertisementSearchCO) {
         AggregationOutput aggregationOutput = aggregateAndFindAvailability(advertisementSearchCO)
         List<AdvertisementResult> advertisementResultsList = extractAdvertisementResultFromAggregationOutput(aggregationOutput)

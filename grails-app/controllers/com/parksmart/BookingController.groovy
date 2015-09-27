@@ -30,7 +30,9 @@ class BookingController extends RestfulController {
 
     @Secured('IS_AUTHENTICATED_FULLY')
     def create() {
-        respond new Booking(params)
+        Advertisement advertisement = Advertisement.get(params.advertisementId)
+        AdvertisementResult advertisementResult = advertisementService.createInstanceOfAdvertisementResult(advertisement)
+        respond new Booking(params), model: [advertisementResult:advertisementResult]
     }
 
     @Transactional

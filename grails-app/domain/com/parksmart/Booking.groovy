@@ -22,6 +22,7 @@ class Booking {
     Date lastUpdated
 
     static constraints = {
+        address(nullable: true)
         advertisementId()
         isParking(nullable: true)
         isCycle(nullable: true)
