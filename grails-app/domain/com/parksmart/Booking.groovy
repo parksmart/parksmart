@@ -8,9 +8,9 @@ class Booking {
     Long advertisementId
     Long ownerId
     Long customerId
-    @BindingFormat("MM/dd/yyyy")
+    @BindingFormat("yyyy-MM-dd")
     Date startDate
-    @BindingFormat("MM/dd/yyyy")
+    @BindingFormat("yyyy-MM-dd")
     Date endDate
     Integer amount
     Boolean isParking

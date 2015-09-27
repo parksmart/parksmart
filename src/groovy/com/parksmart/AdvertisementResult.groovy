@@ -8,6 +8,7 @@ class AdvertisementResult extends Advertisement {
     }
 
     AdvertisementResult(Advertisement advertisement) {
+        id = advertisement?.id
         name=advertisement?.name
         address = advertisement?.address
         city = advertisement?.address
