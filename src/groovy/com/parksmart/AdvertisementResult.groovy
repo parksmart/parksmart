@@ -27,4 +27,23 @@ class AdvertisementResult extends Advertisement {
     List parkingAvailabilityRange
     List cycleAvailabilityRange
 
+    String getPrettyParkingAvailability(){
+        List<String> dateRanges = parkingAvailabilityRange.collect{List<Date> dateRange->
+            dateRange.first().format('dd-MMM') +
+                    ' - ' +
+                    dateRange.last().format('dd-MMM')
+        }
+        dateRanges.join(',')
+    }
+
+    String getPrettyCycleAvailability(){
+        List<String> dateRanges = cycleAvailabilityRange.collect{List<Date> dateRange->
+            dateRange.first().format('dd-MMM') +
+                    ' - ' +
+                    dateRange.last().format('dd-MMM')
+        }
+        dateRanges.join(',')
+    }
+
+
 }
