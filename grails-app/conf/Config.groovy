@@ -95,6 +95,7 @@ environments {
         twilio.skipAuthenticationForInboundSMS = true
     }
     qa{
+        grails.plugin.console.enabled = true
         grails.assets.minifyJs = false
     }
     production {
