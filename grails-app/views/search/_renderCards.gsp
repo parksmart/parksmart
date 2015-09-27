@@ -3,7 +3,7 @@
 <g:each in="${advertisements}" var="advertisement">
     <div class="col-sm-12">
         <div class="panel panel-default">
-            <div class="panel-heading text-center">
+            <div class="panel-heading text-center result-card-title" style="padding: 15px;;">
                 <b>${advertisement?.name}</b>
             </div>
 
@@ -23,6 +23,7 @@
                 <div class="col-sm-10">
                     <ps:fieldValue fieldName="Address" value="${advertisement?.address}"/>
                     <ps:fieldValue fieldName="Available On" value="${advertisement?.daysAvailable*.shortName?.join(", ")}"/>
+                    <ps:fieldValue fieldName="Contact" value="${advertisement?.owner?.name} - ${advertisement?.owner?.mobileNumber}"/>
                     <g:if test="${advertisement?.numberOfParkingSlots}">
                         <ps:fieldValue fieldName="Parking Rent/Day" value="${advertisement?.pricePerParkingSlot}">
                             <i class="fa fa-inr"></i>
@@ -37,17 +38,26 @@
 
                 </div>
 
+                <div class="row">
+                    <div class="col-sm-offset-8 col-sm-2">
+                        <a href="${createLink(controller: 'advertisement', action: 'show', id: advertisement?.id)}" class="btn btn-default">View Details</a>
 
-            </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <a class="btn btn-default" href="${createLink(controller: 'booking', action: 'create', params: [advertisementId : advertisement?.id])}"> Book Now </a>
+                    </div>
 
-            <div class="row">
-                <div class="col-sm-2 col-sm-offset-7">
-                    <a href="${createLink(controller: 'advertisement', action: 'show', id: advertisement?.id)}" class="btn btn-default">View Details</a>
+
                 </div>
+
+
+
             </div>
+
             <g:if test="${!ifViewerIsOwner}">
                 <div class="panel-footer text-right" style="padding-top: 0px; padding-bottom: 0px;">
-                    <a class="btn btn-sm btn-default" href="${createLink(controller: 'booking', action: 'create', params: [advertisementId : advertisement?.id])}"> Book Now </a>
+
+
                 </div>
             </g:if>
         </div>
