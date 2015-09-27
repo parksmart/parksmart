@@ -19,6 +19,8 @@ class Advertisement {
     List<DayType> daysAvailable
     Long ownerId
 
+    Boolean isDeleted
+
     String startTime
     String endTime
 
@@ -35,6 +37,7 @@ class Advertisement {
         pricePerCycle(nullable: true)
         daysAvailable()
         ownerId()
+        isDeleted(nullable: true)
 
     }
 
