@@ -81,6 +81,8 @@ function fillInAddress() {
     marker.addListener('click', function () {
         infowindow.open(map, marker);
     });
+
+    searchAvailabelLocations();
 }
 // [END region_fillform]
 
@@ -125,6 +127,7 @@ var successCallback = function (responseJson) {
 };
 
 function searchAvailabelLocations() {
+    console.log("Calling search now...");
     var queryParams = $("#searchForm").serialize();
     delete queryParams.address;
     $.ajax({
