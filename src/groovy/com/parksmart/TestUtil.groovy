@@ -43,6 +43,8 @@ class TestUtil {
             Advertisement advertisement = new Advertisement(ad)
             advertisement.geoLocation  = new Point(advertisement.location[0], advertisement.location[1])
             advertisement.ownerId = getRandom(userIdList)
+            advertisement.startTime = "08:00"
+            advertisement.endTime = "18:00"
             save(advertisement)
         }
         assert Advertisement.count() == ads.size()
