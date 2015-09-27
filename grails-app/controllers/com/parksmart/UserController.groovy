@@ -13,15 +13,17 @@ class UserController {
     def myProfile(Long currentUserId){
         User currentUser = User.get(currentUserId)
 
-        List<Booking> bookingList = Booking.findAllByCustomerId(currentUserId)
+        List<Booking> myBookingList = Booking.findAllByCustomerId(currentUserId)
 //        List<Advertisement> advertisementList = Advertisement.list()
-        List<Advertisement> advertisementList = Advertisement.findAllByOwnerId(currentUserId)
+        List<Advertisement> myAdvertisementList = Advertisement.findAllByOwnerId(currentUserId)
+
 //        List<Advertisement> rentOutAdvertisementList = Advertisement.list()
         List<Advertisement> rentOutAdvertisementList = Advertisement.findAllByOwnerId(currentUserId)
+        List<Booking> myRentOutBookings = Booking.findAllByOwnerId(currentUserId)
         [currentUser:currentUser,
-                bookingList:bookingList,
-                advertisementList:advertisementList,
-                rentOutAdvertisementList: rentOutAdvertisementList
+                myBookingList:myBookingList,
+                myAdvertisementList :myAdvertisementList ,
+                myRentOutBookings: myRentOutBookings
         ]
     }
 }
