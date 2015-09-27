@@ -228,7 +228,8 @@
 
                         <!-- name-and-slogan -->
                         <div class="site-slogan">
-                            Be smart because it matters..
+                            %{--Be smart because it matters..--}%
+                            Promoting the car-free day in a smart way...
                         </div>
 
                     </div>

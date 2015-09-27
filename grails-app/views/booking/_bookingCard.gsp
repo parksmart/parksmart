@@ -1,7 +1,7 @@
 <g:each in="${bookings}" var="booking">
     <div class="col-sm-12">
         <div class="panel panel-default">
-            <div class="panel-heading text-center">
+            <div class="panel-heading text-center" style="padding: 15px;">
                 <b>${booking?.bookingId}</b>
                 <b> - ${booking?.advertisement?.name} </b>
             </div>
